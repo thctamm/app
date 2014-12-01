@@ -18,7 +18,7 @@ var addView = Titanium.UI.createView({
 });
 
 // event listener for swipe functionality
-addview.addEventListener('swipe', function(e){
+addView.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
 		addWin.close();
