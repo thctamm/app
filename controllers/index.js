@@ -69,10 +69,10 @@ pastBut.addEventListener('click', function(e) {
 });
 
 // button for adding an exercise if iOS
-if (Ti.Platform.osname == "iOS") 
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad") 
 {
 	var addBut = $.UI.create('Button', {
-	    bottom: 40,
+	    bottom: 0,
 	    title: 'Add exercise',
 	    id: 'button'
 	});
