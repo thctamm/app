@@ -1,4 +1,4 @@
-// sofia was here
+// tim was here
 
 // create a window and view for index
 var indexWin = Titanium.UI.createWindow({
