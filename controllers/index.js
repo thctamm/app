@@ -72,7 +72,7 @@ pastBut.addEventListener('click', function(e) {
 if (Ti.Platform.osname == "iOS") 
 {
 	var addBut = $.UI.create('Button', {
-	    bottom: 0,
+	    bottom: 40,
 	    title: 'Add exercise',
 	    id: 'button'
 	});
