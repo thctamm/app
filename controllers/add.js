@@ -71,9 +71,19 @@ var sets = 0;
 var reps = 0;
 var weight = 0;
 
+// text field for exercise name
+var nameField = Ti.UI.createTextField({
+	color: '#336699',
+	hintText: 'Exercise name',
+	height: 35,
+	top: 130,
+	width: '100%',
+});
 
-// Time checkbox
-var checkbox1 = Ti.UI.createButton({
+//android check box height
+if (Ti.Platform.osname == "android") 
+{
+	var checkbox1 = Ti.UI.createButton({
     title: '',
     top: 55,
     left: 10,
@@ -86,8 +96,126 @@ var checkbox1 = Ti.UI.createButton({
     color: '#fff',
     font:{fontSize: 25, fontWeight: 'bold'},
     value: false //value is a custom property in this casehere.
-});
- 
+	});
+	
+	// sets checkbox
+	var checkbox2 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 50,
+    width: 30,
+    height: 30,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+	
+	// reps checkbox
+	var checkbox3 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 90,
+    width: 30,
+    height: 30,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+	
+	// weight checkbox
+	var checkbox4 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 130,
+    width: 30,
+    height: 30,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+}
+
+//iphone check boxes
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad") 
+{
+		var checkbox1 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 10,
+    width: 30,
+    height: 20,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+	
+	// sets checkbox
+	var checkbox2 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 50,
+    width: 30,
+    height: 20,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+	
+	// reps checkbox
+	var checkbox3 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 90,
+    width: 30,
+    height: 20,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+	
+	// weight checkbox
+	var checkbox4 = Ti.UI.createButton({
+    title: '',
+    top: 55,
+    left: 130,
+    width: 30,
+    height: 20,
+    borderColor: '#666',
+    borderWidth: 2,
+    borderRadius: 3,
+    backgroundColor: '#aaa',
+    color: '#fff',
+    font:{fontSize: 25, fontWeight: 'bold'},
+    value: false //value is a custom property in this casehere.
+	});
+
+}
+
+
 //Attach some simple on/off actions
 checkbox1.on = function() {
     this.backgroundColor = '#007690';
@@ -109,23 +237,6 @@ checkbox1.addEventListener('click', function(e) {
         e.source.off();
         time = 0;
     }
-});
-
-
-// sets checkbox
-var checkbox2 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 50,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
 });
  
 //Attach some simple on/off actions
@@ -152,22 +263,7 @@ checkbox2.addEventListener('click', function(e) {
 });
 
 
-// reps checkbox
-var checkbox3 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 90,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-});
- 
+
 //Attach some simple on/off actions
 checkbox3.on = function() {
     this.backgroundColor = '#007690';
@@ -191,22 +287,6 @@ checkbox3.addEventListener('click', function(e) {
     }
 });
 
-
-// weight checkbox
-var checkbox4 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 130,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-});
  
 //Attach some simple on/off actions
 checkbox4.on = function() {
@@ -229,15 +309,6 @@ checkbox4.addEventListener('click', function(e) {
         e.source.off();
         weight = 0;
     }
-});
-
-// text field for exercise name
-var nameField = Ti.UI.createTextField({
-	color: '#336699',
-	hintText: 'Exercise name',
-	height: 35,
-	top: 130,
-	width: '100%',
 });
 
 groupsdata = [];
