@@ -1,5 +1,5 @@
 // tim was here
-
+//maka was here
 // create a window and view for index
 var indexWin = Titanium.UI.createWindow({
     backgroundColor:'#F2F2F2',
