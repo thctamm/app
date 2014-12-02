@@ -1,4 +1,5 @@
 // create a window and view for index
+// sofia comment
 var indexWin = Titanium.UI.createWindow({
     backgroundColor:'#F2F2F2',
     layout:'vertical',
