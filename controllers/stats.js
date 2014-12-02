@@ -1,3 +1,5 @@
+//comment
+
 var args = arguments[0] || {};
 
 // Create a window and view for stats
