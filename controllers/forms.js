@@ -1,4 +1,3 @@
-// sofia comment
 
 // get the arguments that were passed in.
 var args = arguments[0] || {};

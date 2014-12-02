@@ -3,7 +3,7 @@
  * http://developer.appcelerator.com/question/74921/switchbox-vs-checkbox
  * 
  */
-// sofia comment
+
 var args = arguments[0] || {};
 
 // create a window and view for adding   
