@@ -86,7 +86,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 
 // button for ending a workout
 var endBut = $.UI.create('Button', {
-    top: 160,
+    top: 210,
     title: 'End Workout',
     id: 'button'
 });
@@ -104,6 +104,16 @@ var statsBut = $.UI.create('Button', {
 
 statsBut.addEventListener('click', function(e) {
 	var statsView = Alloy.createController('stats', {db:db}).getView();
+});
+
+var graphBut = $.UI.create('Button', {
+    top: 160,
+    title: 'Graph',
+    id: 'button'
+});
+
+graphBut.addEventListener('click', function(e) {
+	var graphView = Alloy.createController('graph', {db:db}).getView();
 });
 
 // open the database
@@ -203,6 +213,7 @@ function end_workout (e)
 // add buttons to main screen
 indexView.add(pastBut);
 indexView.add(statsBut);
+indexView.add(graphBut);
 
 // if a workout hasn't been started
 if (typeof workout_id == 'undefined')
