@@ -40,7 +40,18 @@ detailview.addEventListener('swipe', function(e){
 	}
 });
 
-var workout_id;
+// instantiates calendar ADD LIBRARY FOR AG CALENDAR
+Titanium.Calendar = Ti.Calendar = require("ag.calendar");
+
+Ti.Calendar.dataSource("coredata");
+
+// creates swipeable month calendar view
+var calendarView = Ti.Calendar.createView({
+    top: 0,
+    editable: true,
+    color: "white"
+});
+/*var workout_id;
 
 // variables, where table contents are stored
 var data = [];
@@ -251,3 +262,4 @@ pastview.addEventListener('click', function (e) {
 pastWin.add(pastview);
 pastWin.open();
 
+*/
