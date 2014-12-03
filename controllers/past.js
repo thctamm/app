@@ -250,3 +250,4 @@ pastview.addEventListener('click', function (e) {
 // add view to window and open list of workouts.
 pastWin.add(pastview);
 pastWin.open();
+

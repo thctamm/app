@@ -65,7 +65,7 @@ var pastBut = $.UI.create('Button', {
 });
 
 pastBut.addEventListener('click', function(e) {
-	var pastView = Alloy.createController('past', {db:db}).getView();
+	var pastView = Alloy.createController('today', {db:db}).getView();
 });
 
 // button for adding an exercise if iOS
@@ -89,7 +89,7 @@ var endBut = $.UI.create('Button', {
     top: 210,
     title: 'End Workout',
     id: 'button'
-});
+});  
 
 endBut.addEventListener('click', function(e) {
 	end_workout();
