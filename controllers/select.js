@@ -28,7 +28,7 @@ function editExercises(exercises, second, third)
 		exercises.next();
 		k++;
 	}
-	if (typeof second !== "undefined" || typeof third !== "undefined")
+	if (typeof third !== "undefined" || typeof second !== "undefined")
 	{
 		var sec_label = Titanium.UI.createLabel({
 		    text:'Secondary exercises',
@@ -61,7 +61,6 @@ function editExercises(exercises, second, third)
 			k++;
 		}
 	}
-	check = 0;
 	if (typeof third !== "undefined")
 	{
 		while (third.isValidRow())
