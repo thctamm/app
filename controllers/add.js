@@ -80,141 +80,81 @@ var nameField = Ti.UI.createTextField({
 	width: '100%',
 });
 
-//android check box height
-if (Ti.Platform.osname == "android") 
-{
-	var checkbox1 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 10,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-	
-	// sets checkbox
-	var checkbox2 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 50,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-	
-	// reps checkbox
-	var checkbox3 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 90,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-	
-	// weight checkbox
-	var checkbox4 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 130,
-    width: 30,
-    height: 30,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-}
+var checkbox1 = Ti.UI.createButton({
+title: '',
+top: 55,
+left: 10,
+width: 30,
+height: 30,
+borderColor: '#666',
+borderWidth: 2,
+borderRadius: 3,
+backgroundColor: '#aaa',
+color: '#fff',
+font:{fontSize: 25, fontWeight: 'bold'},
+value: false //value is a custom property in this casehere.
+});
 
-//iphone check boxes
+// sets checkbox
+var checkbox2 = Ti.UI.createButton({
+title: '',
+top: 55,
+left: 50,
+width: 30,
+height: 30,
+borderColor: '#666',
+borderWidth: 2,
+borderRadius: 3,
+backgroundColor: '#aaa',
+color: '#fff',
+font:{fontSize: 25, fontWeight: 'bold'},
+value: false //value is a custom property in this casehere.
+});
+
+// reps checkbox
+var checkbox3 = Ti.UI.createButton({
+title: '',
+top: 55,
+left: 90,
+width: 30,
+height: 30,
+borderColor: '#666',
+borderWidth: 2,
+borderRadius: 3,
+backgroundColor: '#aaa',
+color: '#fff',
+font:{fontSize: 25, fontWeight: 'bold'},
+value: false //value is a custom property in this casehere.
+});
+
+// weight checkbox
+var checkbox4 = Ti.UI.createButton({
+title: '',
+top: 55,
+left: 130,
+width: 30,
+height: 30,
+borderColor: '#666',
+borderWidth: 2,
+borderRadius: 3,
+backgroundColor: '#aaa',
+color: '#fff',
+font:{fontSize: 25, fontWeight: 'bold'},
+value: false //value is a custom property in this casehere.
+});
+
+//change checkbox heights for ios
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad") 
 {
-		var checkbox1 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 10,
-    width: 30,
-    height: 20,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-	
-	// sets checkbox
-	var checkbox2 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 50,
-    width: 30,
-    height: 20,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-	
-	// reps checkbox
-	var checkbox3 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 90,
-    width: 30,
-    height: 20,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-	
-	// weight checkbox
-	var checkbox4 = Ti.UI.createButton({
-    title: '',
-    top: 55,
-    left: 130,
-    width: 30,
-    height: 20,
-    borderColor: '#666',
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: '#aaa',
-    color: '#fff',
-    font:{fontSize: 25, fontWeight: 'bold'},
-    value: false //value is a custom property in this casehere.
-	});
-
+		checkbox1.setHeight(200);
+		checkbox2.setHeight(200);
+		checkbox3.setHeight(200);
+		checkbox4.setHeight(200);
+		label1.setHeight(260);
+		label2.setHeight(260);
+		label3.setHeight(260);
+		label4.setHeight(260);
 }
-
 
 //Attach some simple on/off actions
 checkbox1.on = function() {

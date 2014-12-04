@@ -28,7 +28,7 @@ function editExercises(exercises, second, third)
 		exercises.next();
 		k++;
 	}
-	if (typeof third !== "undefined" || typeof second !== "undefined")
+	if ((typeof third !== "undefined") || (typeof second !== "undefined"))
 	{
 		var sec_label = Titanium.UI.createLabel({
 		    text:'Secondary exercises',
@@ -38,8 +38,8 @@ function editExercises(exercises, second, third)
 		    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 		    color: 'black',
 		    backgroundColor: '#C4C4C4',
-		    left: 10,
-		    right: 10,
+		    left: '2%',
+		    right: '2%',
 		    top: 10 + k * 50,
 		    height: 30
 		});
