@@ -70,21 +70,34 @@ date.addEventListener('click', function(e) {
         useSpinner : true,
         width: Ti.UI.SIZE, 
         visibleItems: 5,
-        minDate : new Date(2012, 0, 1),
+        minDate : new Date(1977, 4, 29),
         maxDate : new Date(2018, 11, 31),
-        value : new Date(2014, 3, 12),
+        value : new Date(2014, 3, 12), //make this be current date !!!!!!
         top : 40,
     });
- 
+	
+	
     var set = Ti.UI.createButton({
         title : 'GO',
         top : 250,
     });
  
     set.addEventListener('click', function(e) {
-        date.setValue('' + " col1:" + picker.value );
-        alert(date);
-        var dateView = Alloy.createController('pastDate', {db:args.db, date:date}).getView();
+    	var month = picker.value.getMonth() + 1;
+    	if (month < 10)
+    	{
+    		month = '0' + month;
+    	}
+    	var year = picker.value.getFullYear();
+    	var day = picker.value.getDate();
+    	if (day < 10)
+    	{
+    		day = '0' + day;
+    	}
+    	var datestring = year + '-' + month + '-' + day;
+        date.setValue(datestring);
+        alert(datestring);
+        var dateView = Alloy.createController('pastDate', {db:args.db, date:datestring}).getView();
     });
  
     pastview.add(picker);
