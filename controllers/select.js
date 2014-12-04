@@ -286,7 +286,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	var win1 = Titanium.UI.iOS.createNavigationWindow({
    		window: mainWin
 	});
-	win1.open;
+	win1.open();
 }
 else
 {
