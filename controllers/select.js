@@ -126,6 +126,15 @@ var exercisesview = Titanium.UI.createScrollView({
     width:'100%'
 });
 
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iPhone.createNavigationGroup({
+	   window: exercisesWin,
+	});
+	mainWin.add(nav);
+}
+
+
 // event listeners for when a exercise is selected
 exercisesview.addEventListener('click', function(e) {
 	if (e.source.title != null)
