@@ -53,9 +53,9 @@ detailview.addEventListener('swipe', function(e){
 
 var date = Ti.UI.createTextField({
     color : '#336699',
-    top :50,
-    left : 100,
-    width : 150,
+    top :10,
+    left : '2%',
+    right : '2%',
     height : 50,
     hintText : 'choose date',
     editable : false,
