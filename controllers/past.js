@@ -66,6 +66,8 @@ date.addEventListener('click', function(e) {
         type : Ti.UI.PICKER_TYPE_DATE,
         //useSpinner for Android Only
         useSpinner : true,
+        width: Ti.UI.SIZE, 
+        visibleItems: 5,
         minDate : new Date(2012, 0, 1),
         maxDate : new Date(2018, 11, 31),
         value : new Date(2014, 3, 12),
