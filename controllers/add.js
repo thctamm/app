@@ -154,6 +154,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		label2.setHeight(260);
 		label3.setHeight(260);
 		label4.setHeight(260);
+		namefield.setHeight(300);
 }
 
 //Attach some simple on/off actions
