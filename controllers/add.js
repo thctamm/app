@@ -146,15 +146,15 @@ value: false //value is a custom property in this casehere.
 //change checkbox heights for ios
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad") 
 {
-		checkbox1.setHeight(200);
-		checkbox2.setHeight(200);
-		checkbox3.setHeight(200);
-		checkbox4.setHeight(200);
-		label5.setHeight(260);
-		label2.setHeight(260);
-		label3.setHeight(260);
-		label4.setHeight(260);
-		nameField.setHeight(300);
+		checkbox1.setTop(200);
+		checkbox2.setTop(200);
+		checkbox3.setTop(200);
+		checkbox4.setTop(200);
+		label5.setTop(260);
+		label2.setTop(260);
+		label3.setTop(260);
+		label4.setTop(260);
+		nameField.setTop(300);
 }
 
 //Attach some simple on/off actions
