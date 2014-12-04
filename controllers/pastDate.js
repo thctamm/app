@@ -1,3 +1,5 @@
+
+// get the arguments that were passed in.
 var args = arguments[0] || {};
 
 // create a window and view for past exercises
@@ -42,56 +44,13 @@ detailview.addEventListener('swipe', function(e){
 	}
 });
 
-//var workout_id;
+var workout_id;
 
 // variables, where table contents are stored
-//var data = [];
-//var table;
+var data = [];
+var table;
 
-// get the arguments that were passed in.
-//var args = arguments[0] || {};
 
-var date = Ti.UI.createTextField({
-    color : '#336699',
-    top :50,
-    left : 100,
-    width : 75,
-    height : 50,
-    hintText : 'date',
-    editable : false,
-    borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED
-});
-pastview.add(date);
- 
-date.addEventListener('click', function(e) {
-    var picker = Ti.UI.createPicker({
-        type : Ti.UI.PICKER_TYPE_DATE,
-        //useSpinner for Android Only
-        useSpinner : true,
-        width: Ti.UI.SIZE, 
-        visibleItems: 5,
-        minDate : new Date(2012, 0, 1),
-        maxDate : new Date(2018, 11, 31),
-        value : new Date(2014, 3, 12),
-        top : 40,
-    });
- 
-    var set = Ti.UI.createButton({
-        title : 'GO',
-        top : 250,
-    });
- 
-    set.addEventListener('click', function(e) {
-        date.setValue('' + " col1:" + picker.value );
-        var dateView = Alloy.createController('pastDate', {db:args.db}).getView();
-    });
- 
-    pastview.add(picker);
-    pastview.add(set);
-}); 
-pastWin.add(pastview);
-pastWin.open();
-/*
 // for keeping track of workouts
 listed = [];
 
@@ -289,6 +248,7 @@ pastview.addEventListener('click', function (e) {
 	}
 	
 });
-*/
-// add view to window and open list of workouts.
 
+// add view to window and open list of workouts.
+pastWin.add(pastview);
+pastWin.open();
