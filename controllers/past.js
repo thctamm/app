@@ -57,7 +57,7 @@ var date = Ti.UI.createTextField({
     left : 100,
     width : 75,
     height : 50,
-    hintText : 'date',
+    hintText : 'choose date',
     editable : false,
     borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED
 });

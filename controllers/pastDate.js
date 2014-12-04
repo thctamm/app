@@ -2,7 +2,7 @@
 // get the arguments that were passed in.
 var args = arguments[0] || {};
 
-// create a window and view for past exercises
+/*// create a window and view for past exercises
 var pastWin = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
     layout:'vertical',
@@ -14,6 +14,7 @@ var pastview = Titanium.UI.createScrollView({
     left:'0dp',
     width:'100%'
 });
+*/
 
 // event listener for swipe functionality
 pastview.addEventListener('swipe', function(e){
@@ -27,7 +28,7 @@ pastview.addEventListener('swipe', function(e){
 var detailWin = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
     layout:'vertical',
-    title: 'past exercise'
+    title: 'past exercises'
 });
 
 var detailview = Titanium.UI.createView({
@@ -51,59 +52,14 @@ var data = [];
 var table;
 
 
-// for keeping track of workouts
-listed = [];
-
-// function for listing workouts
-function list_workouts ()
-{
-	// delete previous list
-	for (i = 0; i < listed.length; i++)
-	{
-		pastview.remove(listed[i]);
-	}
-	listed = [];
-	
-	// get previous workouts
-	var query = args.db.execute("SELECT * FROM workouts ORDER BY id DESC");
-
-	// generate a list of previous workouts
-	var i = 0;
-	while (query.isValidRow())
-	{
-		var format_time = args.db.execute("SELECT strftime('%Y-%m-%d %H:%M', ?) as time", query.fieldByName('timestamp'));
-		var new_but =$.UI.create('Button', {
-		    top: 10 + i * 50,
-		    title: format_time.fieldByName('time'),
-		    code: query.fieldByName('id'),
-		    id: 'button',
-		    color: "black"
-		});
-		pastview.add(new_but);
-		listed.push(new_but);
-		query.next();
-		i++;
-		
-		// close the queryd time
-		format_time.close();
-	}
-	
-	// close the queryd info
-	query.close();
-}
-
-
-// list the workouts
-list_workouts();
-
 // Event listener for when a workout is chosen
-pastview.addEventListener('click', function (e) {
+dateView.addEventListener('click', function (e) {
 	// to make sure a blank area was not clicked
-	if (e.source.title != null)
+	if (e.date.value != null)
 	{
 		
 		// change the title of the window
-		detailWin.setTitle(e.source.title);
+		detailWin.setTitle(e.date.value);
 		
 		// clear table if previously used
 		if (typeof table != 'undefined' )
@@ -113,7 +69,7 @@ pastview.addEventListener('click', function (e) {
 		data = [];
 		
 		// get workout_id
-		workout_id = e.source.code;
+		workout_id = e.data.value;
 		
 		// get previous workouts
 		var details = args.db.execute("SELECT * FROM workout_info where workout_id = ?", workout_id);
@@ -233,9 +189,6 @@ pastview.addEventListener('click', function (e) {
 			// remove all exercises from that workout
 			args.db.execute("DELETE FROM workout_info where workout_id = ?", workout_id);
 			
-			// update the list of workouts
-			list_workouts();
-			
 			//return to list of workouts
 			detailWin.close();
 		});
@@ -250,5 +203,5 @@ pastview.addEventListener('click', function (e) {
 });
 
 // add view to window and open list of workouts.
-pastWin.add(pastview);
-pastWin.open();
+detailWin.add(pastview);
+detailWin.open();
