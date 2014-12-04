@@ -5,7 +5,7 @@ var args = arguments[0] || {};
 var exercise_buttons = [];
 
 // function for editing exercises view
-function editExercises(exercises)
+function editExercises(exercises, second, third)
 {
 	var k = 0;
 	
@@ -28,9 +28,87 @@ function editExercises(exercises)
 		exercises.next();
 		k++;
 	}
+	var check = 0;
+	if (typeof second !== "undefined")
+	{
+		while (second.isValidRow())
+		{
+			if (check == 0)
+			{
+				var sec_label = Titanium.UI.createLabel({
+				    text:'Secondary exercises',
+				    font: {
+						fontSize: 24
+					},
+				    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+				    color: 'black',
+				    left: 10,
+				    right: 10,
+				    top: 10 + k * 50,
+				    height: 40
+				});
+				exercise_buttons.push(sec_label);
+				exercisesview.add(sec_label);
+				k++;
+				check++;
+			}
+			var button = $.UI.create('Button', {
+			    top: 10 + k * 50,
+			    title: second.fieldByName('name'),
+			    id: 'button'
+			});
+			exercise_buttons.push(button);
+			exercisesview.add(button);
+			second.next();
+			k++;
+		}
+	}
+	check = 0;
+	if (typeof third !== "undefined")
+	{
+		while (third.isValidRow())
+		{
+			if (check == 0)
+			{
+				var third_label = Titanium.UI.createLabel({
+				    text:'Tertiary exercises',
+				    font: {
+						fontSize: 24
+					},
+				    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+				    color: 'black',
+				    left: 10,
+				    right: 10,
+				    top: 10 + k * 50,
+				    height: 40
+				});
+				exercise_buttons.push(third_label);
+				exercisesview.add(third_label);
+				k++;
+				check++;
+			}
+			var button = $.UI.create('Button', {
+			    top: 10 + k * 50,
+			    title: third.fieldByName('name'),
+			    id: 'button'
+			});
+			exercise_buttons.push(button);
+			exercisesview.add(button);
+			third.next();
+			k++;
+		}
+	}
 	
 	// close the queryd info
 	exercises.close();
+	if (typeof second !== 'undefined')
+	{
+		second.close();
+	}
+	if (typeof third !== 'undefined')
+	{
+		third.close();
+	}
 	
 	// add the exercises view to the window
 	exercisesWin.add(exercisesview);
@@ -117,9 +195,11 @@ groupview.addEventListener('click', function (e) {
 		
 		// get the relevant exercises from the database
 		var exercises = args.db.execute("SELECT * FROM list where muscle_group = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
+		var secondary = args.db.execute("SELECT * FROM list where 2_group = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
+		var tertiary = args.db.execute("SELECT * FROM list where 3_group = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
 		
 		// edit the exercisesview and open the window
-		editExercises(exercises);
+		editExercises(exercises, secondary, tertiary);
 		exercisesWin.open();
 	}
 });

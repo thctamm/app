@@ -85,6 +85,9 @@ if (time_exists)
 	// label for time
 	var timebox = Titanium.UI.createLabel({
 	    text:'00:00:00',
+	    font: {
+			fontSize: 24
+		},
 	    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	    color: 'black',
 	    left: 10,
