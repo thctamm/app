@@ -40,21 +40,21 @@ detailview.addEventListener('swipe', function(e){
 	}
 });
 
-var workout_id;
+//var workout_id;
 
 // variables, where table contents are stored
-var data = [];
-var table;
+//var data = [];
+//var table;
 
 // get the arguments that were passed in.
-var args = arguments[0] || {};
+//var args = arguments[0] || {};
 
 var date = Ti.UI.createTextField({
     color : '#336699',
-    top :410,
-    left : 10,
-    width : 300,
-    height : 60,
+    top :50,
+    left : 100,
+    width : 75,
+    height : 50,
     hintText : 'date',
     editable : false,
     borderStyle : Ti.UI.INPUT_BORDERSTYLE_ROUNDED
@@ -69,12 +69,12 @@ date.addEventListener('click', function(e) {
         minDate : new Date(2012, 0, 1),
         maxDate : new Date(2018, 11, 31),
         value : new Date(2014, 3, 12),
-        top : 70,
+        top : 40,
     });
  
     var set = Ti.UI.createButton({
-        title : 'set',
-        top : 240,
+        title : 'GO',
+        top : 250,
     });
  
     set.addEventListener('click', function(e) {
