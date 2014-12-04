@@ -28,23 +28,47 @@ function editExercises(exercises, second, third)
 		exercises.next();
 		k++;
 	}
-	if (second.isValidRow() || third.isValidRow())
+	if (typeof second != "undefined")
 	{
-		var sec_label = Titanium.UI.createLabel({
-		    text:'Secondary exercises',
-		    font: {
-				fontSize: 20
-			},
-		    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-		    color: 'black',
-		    backgroundColor: '#C4C4C4',
-		    left: '2%',
-		    right: '2%',
-		    top: 10 + k * 50,
-		    height: 30
-		});
-		exercise_buttons.push(sec_label);
-		exercisesview.add(sec_label);
+		if (second.isValidRow())
+		{
+			var sec_label = Titanium.UI.createLabel({
+			    text:'Secondary exercises',
+			    font: {
+					fontSize: 20
+				},
+			    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			    color: 'black',
+			    backgroundColor: '#C4C4C4',
+			    left: '2%',
+			    right: '2%',
+			    top: 10 + k * 50,
+			    height: 30
+			});
+			exercise_buttons.push(sec_label);
+			exercisesview.add(sec_label);
+		}
+	}
+	else if (typeof third != "undefined")
+	{
+		if (third.isValidRow())
+		{
+			var sec_label = Titanium.UI.createLabel({
+			    text:'Secondary exercises',
+			    font: {
+					fontSize: 20
+				},
+			    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			    color: 'black',
+			    backgroundColor: '#C4C4C4',
+			    left: '2%',
+			    right: '2%',
+			    top: 10 + k * 50,
+			    height: 30
+			});
+			exercise_buttons.push(sec_label);
+			exercisesview.add(sec_label);
+		}
 	}
 	if (typeof second != "undefined")
 	{
@@ -87,9 +111,6 @@ function editExercises(exercises, second, third)
 	{
 		third.close();
 	}
-	
-	// add the exercises view to the window
-	exercisesWin.add(exercisesview);
 }
 
 // create a window and view for muscle groups
@@ -125,6 +146,9 @@ var exercisesview = Titanium.UI.createScrollView({
     left:'0dp',
     width:'100%'
 });
+
+// add the exercises view to the window
+exercisesWin.add(exercisesview);
 
 // event listeners for when a exercise is selected
 exercisesview.addEventListener('click', function(e) {

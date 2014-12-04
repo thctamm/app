@@ -8,7 +8,7 @@ var exercise_buttons = [];
 var setsBut, weightBut, repsBut, timeBut;
 
 // function for editing exercises view
-function editExercises(exercises)
+function editExercises(exercises, second, third)
 {
 	var k = 0;
 	
@@ -31,12 +31,89 @@ function editExercises(exercises)
 		exercises.next();
 		k++;
 	}
+	if (typeof second != "undefined")
+	{
+		if (second.isValidRow())
+		{
+			var sec_label = Titanium.UI.createLabel({
+			    text:'Secondary exercises',
+			    font: {
+					fontSize: 20
+				},
+			    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			    color: 'black',
+			    backgroundColor: '#C4C4C4',
+			    left: '2%',
+			    right: '2%',
+			    top: 10 + k * 50,
+			    height: 30
+			});
+			exercise_buttons.push(sec_label);
+			exercisesview.add(sec_label);
+		}
+	}
+	else if (typeof third != "undefined")
+	{
+		if (third.isValidRow())
+		{
+			var sec_label = Titanium.UI.createLabel({
+			    text:'Secondary exercises',
+			    font: {
+					fontSize: 20
+				},
+			    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+			    color: 'black',
+			    backgroundColor: '#C4C4C4',
+			    left: '2%',
+			    right: '2%',
+			    top: 10 + k * 50,
+			    height: 30
+			});
+			exercise_buttons.push(sec_label);
+			exercisesview.add(sec_label);
+		}
+	}
+	if (typeof second != "undefined")
+	{
+		while (second.isValidRow())
+		{
+			var button = $.UI.create('Button', {
+			    top: 50 + k * 50,
+			    title: second.fieldByName('name'),
+			    id: 'button'
+			});
+			exercise_buttons.push(button);
+			exercisesview.add(button);
+			second.next();
+			k++;
+		}
+	}
+	if (typeof third != "undefined")
+	{
+		while (third.isValidRow())
+		{
+			var button = $.UI.create('Button', {
+			    top: 10 + k * 50,
+			    title: third.fieldByName('name'),
+			    id: 'button'
+			});
+			exercise_buttons.push(button);
+			exercisesview.add(button);
+			third.next();
+			k++;
+		}
+	}
 	
 	// close the queryd info
 	exercises.close();
-	
-	// add the exercises view to the window
-	exercisesWin.add(exercisesview);
+	if (typeof second !== 'undefined')
+	{
+		second.close();
+	}
+	if (typeof third !== 'undefined')
+	{
+		third.close();
+	}
 }
 
 // function for editing data view
@@ -172,6 +249,9 @@ var exercisesview = Titanium.UI.createScrollView({
     width:'100%'
 });
 
+// add the exercises view to the window
+exercisesWin.add(exercisesview);
+
 // create a window and view for data 
 var dataWin = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
@@ -244,9 +324,11 @@ groupview.addEventListener('click', function (e) {
 		
 		// get the relevant exercises from the database
 		var exercises = args.db.execute("SELECT * FROM list where muscle_group = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
+		var secondary = args.db.execute("SELECT * FROM list where second = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
+		var tertiary = args.db.execute("SELECT * FROM list where third = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
 		
 		// edit the exercisesview and open the window
-		editExercises(exercises);
+		editExercises(exercises, secondary, tertiary);
 		exercisesWin.open();
 	}
 });
@@ -274,7 +356,7 @@ exercisesview.addEventListener('click', function (e) {
 // button for favorite exercises
 var favoritesBut = $.UI.create('Button', {
     top: '10%',
-    height: '42.5%',
+    bottom: '10%',
     left: '2%',
     width: '47%',
     font: {
@@ -300,7 +382,7 @@ favoritesBut.addEventListener('click', function(e) {
 // button for top exercises
 var topBut = $.UI.create('Button', {
     top: '10%',
-    height: '42.5%',
+    bottom: '10%',
     right: '2%',
     width: '47%',
     font: {
@@ -339,4 +421,5 @@ endview.add(topBut);
 
 // add the views to the main window and open it
 mainWin.add(groupview);
+mainWin.add(endview);
 mainWin.open();

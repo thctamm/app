@@ -7,7 +7,7 @@ var date = args.date;
 var displayWin = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
     layout:'vertical',
-    title: 'Past exercises'
+    title: date
 });
 
 var displayview = Titanium.UI.createScrollView({
@@ -27,87 +27,44 @@ displayview.addEventListener('swipe', function(e){
 
 
 // get previous workouts
-var query = args.db.execute("SELECT id FROM workouts WHERE dmy = ?", date);
+var query = args.db.execute("SELECT * FROM workouts WHERE date(timestamp) = ?", date);
 if (query.isValidRow())
 {
-	var details = args.db.execute("SELECT * FROM workout_info WHERE  workout_id = ?", query.fieldByName('id'));
+	var first = 0;
 	var data = [];
-
-	// generate tabel headers
-	var row = Ti.UI.createTableViewRow({
-	    height:'auto',
-	});
-	var label1 = Titanium.UI.createLabel({
-	    text:'Exercise',
-	    color: 'black',
-	    width: '53%',
-	    left: '2%',
-	    top: 10,
-	    font: {
-			fontSize: 15
-		}
-	});
-	var label2 = Titanium.UI.createLabel({
-	    text:'Time',
-	    textAlign: 'center',
-	    color: 'black',
-	    left: '55%',
-	    width: '10%',
-	    top: 10,
-	    font: {
-			fontSize: 15
-		}
-	});
-	var label3 = Titanium.UI.createLabel({
-	    text:'Sets',
-	    textAlign: 'center',
-	    color: 'black',
-	    left: '65%',
-	    width: '10%',
-	    top: 10,
-	    font: {
-			fontSize: 15
-		}
-	});
-	var label4 = Titanium.UI.createLabel({
-	    text:'Reps',
-	    textAlign: 'center',
-	    color: 'black',
-	    left: '75%',
-	    width: '10%',
-	    top: 10,
-	    font: {
-			fontSize: 15
-		}
-	});
-	var label5 = Titanium.UI.createLabel({
-	    text:'Weight',
-	    textAlign: 'center',
-	    color: 'black',
-	    left: '85%',
-	    width: '15%',
-	    top: 10,
-	    font: {
-			fontSize: 15
-		}
-	});
-	
-	// add headers to data
-	row.add(label1);
-	row.add(label2);
-	row.add(label3);
-	row.add(label4);
-	row.add(label5);
-	data.push(row);
-	
-	// populate the table
-	while (details.isValidRow())
+	while (query.isValidRow())
 	{
+		var details = args.db.execute("SELECT * FROM workout_info WHERE  workout_id = ?", query.fieldByName('id'));
+	
+		// generate tabel headers
+		var header = Ti.UI.createTableViewRow({
+		    height:'auto',
+		});
+		
+		var label0 = Titanium.UI.createLabel({
+		    text:query.fieldByName('timestamp'),
+		    color: 'black',
+		    textAlign: 'center',
+		    right: '2%',
+		    left: '2%',
+		    font: {
+		    	fontWeight: 'bold',
+				fontSize: 18
+			}
+		});
+		header.add(label0);
+		data.push(header);
+		if (first == 0)
+		{
+			label0.setTop(10);
+			first++;
+		}
+		
 		var row = Ti.UI.createTableViewRow({
 		    height:'auto',
 		});
 		var label1 = Titanium.UI.createLabel({
-		    text: details.fieldByName('exercise'),
+		    text:'Exercise',
 		    color: 'black',
 		    width: '53%',
 		    left: '2%',
@@ -116,7 +73,7 @@ if (query.isValidRow())
 			}
 		});
 		var label2 = Titanium.UI.createLabel({
-		    text: details.fieldByName('time'),
+		    text:'Time',
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '55%',
@@ -126,7 +83,7 @@ if (query.isValidRow())
 			}
 		});
 		var label3 = Titanium.UI.createLabel({
-		    text: details.fieldByName('sets'),
+		    text:'Sets',
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '65%',
@@ -136,7 +93,7 @@ if (query.isValidRow())
 			}
 		});
 		var label4 = Titanium.UI.createLabel({
-		    text: details.fieldByName('reps'),
+		    text:'Reps',
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '75%',
@@ -146,7 +103,7 @@ if (query.isValidRow())
 			}
 		});
 		var label5 = Titanium.UI.createLabel({
-		    text: details.fieldByName('weight'),
+		    text:'Weight',
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '85%',
@@ -155,13 +112,79 @@ if (query.isValidRow())
 				fontSize: 15
 			}
 		});
+		
+		// add headers to data
 		row.add(label1);
 		row.add(label2);
 		row.add(label3);
 		row.add(label4);
 		row.add(label5);
 		data.push(row);
-		details.next();
+		
+		// populate the table
+		while (details.isValidRow())
+		{
+			var row = Ti.UI.createTableViewRow({
+			    height:'auto',
+			});
+			var label1 = Titanium.UI.createLabel({
+			    text: details.fieldByName('exercise'),
+			    color: 'black',
+			    width: '53%',
+			    left: '2%',
+			    font: {
+					fontSize: 15
+				}
+			});
+			var label2 = Titanium.UI.createLabel({
+			    text: details.fieldByName('time'),
+			    textAlign: 'center',
+			    color: 'black',
+			    left: '55%',
+			    width: '10%',
+			    font: {
+					fontSize: 15
+				}
+			});
+			var label3 = Titanium.UI.createLabel({
+			    text: details.fieldByName('sets'),
+			    textAlign: 'center',
+			    color: 'black',
+			    left: '65%',
+			    width: '10%',
+			    font: {
+					fontSize: 15
+				}
+			});
+			var label4 = Titanium.UI.createLabel({
+			    text: details.fieldByName('reps'),
+			    textAlign: 'center',
+			    color: 'black',
+			    left: '75%',
+			    width: '10%',
+			    font: {
+					fontSize: 15
+				}
+			});
+			var label5 = Titanium.UI.createLabel({
+			    text: details.fieldByName('weight'),
+			    textAlign: 'center',
+			    color: 'black',
+			    left: '85%',
+			    width: '15%',
+			    font: {
+					fontSize: 15
+				}
+			});
+			row.add(label1);
+			row.add(label2);
+			row.add(label3);
+			row.add(label4);
+			row.add(label5);
+			data.push(row);
+			details.next();
+		}
+		query.next();
 	}
 	// create the table with data
 	table = Titanium.UI.createTableView({
@@ -173,7 +196,8 @@ if (query.isValidRow())
 	var del = $.UI.create('Button', {
 	   title: 'Delete',
 	   id: "botbutton",
-	   bottom: 10
+	   bottom: 10,
+	   width: '96%'
 	});
 	del.addEventListener('click', function (e) {
 		
