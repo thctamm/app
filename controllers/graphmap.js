@@ -1,6 +1,24 @@
 // get the arguments that were passed in.
 var args = arguments[0] || {};
 
+var graphWin = Titanium.UI.createWindow({
+    backgroundColor: '#F2F2F2',
+    layout:'vertical',
+    title: 'Excercise Data'
+});
+
+var graphView = Titanium.UI.createView({
+	left: 0,
+});
+
+// event listener for swipe functionality
+addView.addEventListener('swipe', function(e){
+	if (e.direction == 'right')
+	{
+		graphWin.close();
+	}
+});
+
 
 $.chartWebView.addEventListener('load', function() {
 	Ti.API.info('chartWebView ready');

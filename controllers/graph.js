@@ -4,6 +4,9 @@ var args = arguments[0] || {};
 // for keeping track of the buttons you've created
 var exercise_buttons = [];
 
+// buttons
+var setsBut, weightBut, repsBut, timeBut;
+
 // function for editing exercises view
 function editExercises(exercises)
 {
@@ -64,11 +67,12 @@ function editData(data)
 		
 	if (data.isValidRow())
 	{
+		var k = 0;
 		// create the buttons for the data and add them to the view
 		if (data.fieldByName('sets') == 1)
 		{
-				var setsBut = $.UI.create('Button', {
-		    	top: 20,
+				setsBut = $.UI.create('Button', {
+		    	top: 10,
 		    	title: 'Sets',
 		    	id: 'button'
 				});
@@ -78,12 +82,13 @@ function editData(data)
 				setsBut.addEventListener('click', function(e) {
 				var setsView = Alloy.createController('graphmap', {db:db.args, type: 'sets', name: data.fieldByName('name')}).getView();
 				});
+				k++;
 		}
 		
 		if (data.fieldByName('reps') == 1)
 		{
-				var repsBut = $.UI.create('Button', {
-		    	top: 70,
+				repsBut = $.UI.create('Button', {
+		    	top: 10 + k * 50,
 		    	title: 'Reps',
 		    	id: 'button'
 				});
@@ -93,27 +98,29 @@ function editData(data)
 				repsBut.addEventListener('click', function(e) {
 				var repsView = Alloy.createController('graphmap', {db:db.args, type: 'reps', name: data.fieldByName('name')}).getView();
 				});
+				k++;
 		}
 		
 		if (data.fieldByName('time') == 1)
 		{
-				var timeBut = $.UI.create('Button', {
-		    	top: 130,
+				timeBut = $.UI.create('Button', {
+		    	top: 10 + k * 50,
 		 	   	title: 'Time',
 		    	id: 'button'
 				});
 				
 				dataview.add(timeBut);
 		
-				setsBut.addEventListener('click', function(e) {
+				timeBut.addEventListener('click', function(e) {
 				var setsView = Alloy.createController('graphmap', {db:db.args, type: 'time', name: data.fieldByName('name')}).getView();
 				});
+				k++;
 		}
 		
 		if (data.fieldByName('weight') == 1)
 		{
-				var weightBut = $.UI.create('Button', {
-		    	top: 20,
+				weightBut = $.UI.create('Button', {
+		    	top: 10 + k * 50,
 		    	title: 'Weight',
 		    	id: 'button'
 				});
@@ -123,14 +130,12 @@ function editData(data)
 				weightBut.addEventListener('click', function(e) {
 				var weightView = Alloy.createController('graphmap', {db:db.args, type: 'weight', name: data.fieldByName('name')}).getView();
 				});
+				k++;
 	
 		}
 	}
-	// close the queryd info
+	// close the query info
 	data.close();
-	
-	// add the exercises view to the window
-	dataWin.add(dataview);
 }
 
 // create a window and view for muscle groups
@@ -178,6 +183,9 @@ var dataview = Titanium.UI.createScrollView({
     left:'0dp',
     width:'100%'
 });
+
+// add the exercises view to the window
+dataWin.add(dataview);
 
 
 // endview
