@@ -14,7 +14,7 @@ var pastview = Titanium.UI.createScrollView({
     left:'0dp',
     width:'100%'
 });
-*/
+
 
 // event listener for swipe functionality
 pastview.addEventListener('swipe', function(e){
@@ -23,7 +23,7 @@ pastview.addEventListener('swipe', function(e){
 		pastWin.close();
 	}
 });
-
+*/
 // Create a window and view for workout details
 var detailWin = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
@@ -53,7 +53,7 @@ var table;
 
 
 // Event listener for when a workout is chosen
-dateView.addEventListener('click', function (e) {
+detailview.addEventListener('click', function (e) {
 	// to make sure a blank area was not clicked
 	if (e.date.value != null)
 	{
@@ -69,7 +69,7 @@ dateView.addEventListener('click', function (e) {
 		data = [];
 		
 		// get workout_id
-		workout_id = e.data.value;
+		workout_id = e.date.value;
 		
 		// get previous workouts
 		var details = args.db.execute("SELECT * FROM workout_info where workout_id = ?", workout_id);
@@ -203,5 +203,5 @@ dateView.addEventListener('click', function (e) {
 });
 
 // add view to window and open list of workouts.
-detailWin.add(pastview);
+detailWin.add(detailview);
 detailWin.open();
