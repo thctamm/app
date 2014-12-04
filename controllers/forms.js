@@ -16,8 +16,7 @@ else
 	formsWin.open();
 }
 
-var formsview = Titanium.UI.createScrollView({
-    scrollType:"vertical",
+var formsview = Titanium.UI.createView({
     left:'0dp',
     width:'100%'
 });
@@ -29,6 +28,10 @@ formsview.addEventListener('swipe', function(e){
 		formsWin.close();
 	}
 });
+
+// variable for keeping track of the timer and time
+var time = 0;
+var timer;
 
 // for keeping track of the forms
 var forms = [];
@@ -65,8 +68,102 @@ for (z = 0; z < options.length; z++)
 		forms.push(field);
 		formsview.add(field);
 		p++;
+		
+		// add a stopper, if time is in the exercise
+		if (options[z] == 'time')
+		{
+			// label for time
+			var timebox = Titanium.UI.createLabel({
+			    text:'00:00:00',
+			    color: 'black',
+			    left: 10,
+			    right: 10,
+			    top: 10 + p * 45,
+			    height: 40
+			});
+			p++;
+			
+			// buttons for stopper
+			var startstop = $.UI.create('Button', {
+			   top: 10 + p * 45,
+			   left: "2%",
+			   width: "47%",
+			   title: 'Start',
+			   id: "button",
+			   backgroundColor: 'green'
+			});
+			startstop.addEventListener('click', function (e) {
+				if (e.getTitle() == 'Start')
+				{
+					// change button appearance
+					e.setTitle("Stop");
+					e.setBackgroundColor('red');
+					
+					// start the timer
+					timer = setInterval("timer()", 10);
+					
+				}
+				else
+				{
+					// change button appearance
+					e.setTitle("Start");
+					e.setBackgroundColor('green');
+					
+					// stop the timer
+					clearInterval(timer);
+				}
+			});
+			var reset = $.UI.create('Button', {
+			   top: 10 + p * 45,
+			   right: "2%",
+			   width: "47%",
+			   title: 'Reset',
+			   id: "button",
+			});
+			p++;
+			reset.addEventListener('click', function (e) {
+				
+				// stop the timer if it is on and reset the startstop button
+				if (startstop.getTitle() == 'stop')
+				{
+					clearInterval(timer);
+					
+					// change button appearance
+					startstop.setTitle("Start");
+					startstop.setBackgroundColor('green');
+				}
+				// reset the timer box
+				timebox.setTitle('00:00:00');
+			});
+		
+		}
 	}
 }
+
+
+// function for updating the time
+function timer()
+{
+	time += 1;
+	var milliseconds = time % 100;
+	if (milliseconds < 10)
+	{
+		milliseconds = '0' + milliseconds;
+	}
+	var seconds = math.floor(time / 100) % 60;
+	if (seconds < 10)
+	{
+		seconds = '0' + seconds;
+	}
+	var minutes = math.floor(time / 6000) % 100;
+	if (minutes < 10)
+	{
+		minutes = '0' + minutes;
+	}
+	timebox.setTitle(minutes + ':' + seconds + ':' + milliseconds);
+	
+}
+
 
 // remove an already existing submit button if there is one
 if (submit_button != null)
