@@ -114,6 +114,16 @@ if (time_exists)
 			time = 0;
 			timer = setInterval(stopper, 10);
 			
+			// keep the screen from sleeping
+			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+			{
+				Titanium.App.idleTimerDisabled = true;
+			}
+			else
+			{
+				formsview.keepScreenOn = true;
+			}
+			
 		}
 		else
 		{
@@ -127,6 +137,16 @@ if (time_exists)
 			
 			// set the time field value
 			timefield.setValue(time / 100);
+			
+			// let the screen sleep
+			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+			{
+				Titanium.App.idleTimerDisabled = false;
+			}
+			else
+			{
+				formsview.keepScreenOn = false;
+			}
 			
 			
 		}
@@ -149,7 +169,17 @@ if (time_exists)
 			
 			// change button appearance
 			startstop.setTitle("Start");
-			startstop.setBackgroundColor('green');			
+			startstop.setBackgroundColor('green');
+			
+			// let the screen sleep
+			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+			{
+				Titanium.App.idleTimerDisabled = false;
+			}
+			else
+			{
+				formsview.keepScreenOn = false;
+			}			
 		}
 		// reset the timer box
 		timebox.setText('00:00:00');
