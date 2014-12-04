@@ -1,3 +1,6 @@
+
+
+
 // create a window and view for index
 var indexWin = Titanium.UI.createWindow({
     backgroundColor:'#F2F2F2',
@@ -197,6 +200,9 @@ function resume (e)
 		var selectWin = Alloy.createController('select', {db:db, workout_id: workout_id}).getView(); 
 	}
 }
+
+
+
 
 // function for ending a workout
 function end_workout (e)
