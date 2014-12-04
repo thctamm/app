@@ -72,7 +72,8 @@ date.addEventListener('click', function(e) {
         visibleItems: 5,
         minDate : new Date(1977, 4, 29),
         maxDate : new Date(2018, 11, 31),
-        value : new Date(2014, 3, 12), //make this be current date !!!!!!
+        value : new Date(2014, 3, 12), 
+        width: '320dp',
         top : 40, 
     });
     
