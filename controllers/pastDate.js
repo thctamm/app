@@ -41,35 +41,55 @@ if (query.isValidRow())
 	    text:'Exercise',
 	    color: 'black',
 	    width: '53%',
-	    left: '2%'
+	    left: '2%',
+	    top: 10,
+	    font: {
+			fontSize: 15
+		}
 	});
 	var label2 = Titanium.UI.createLabel({
 	    text:'Time',
 	    textAlign: 'center',
 	    color: 'black',
 	    left: '55%',
-	    width: '10%'
+	    width: '10%',
+	    top: 10,
+	    font: {
+			fontSize: 15
+		}
 	});
 	var label3 = Titanium.UI.createLabel({
 	    text:'Sets',
 	    textAlign: 'center',
 	    color: 'black',
 	    left: '65%',
-	    width: '10%'
+	    width: '10%',
+	    top: 10,
+	    font: {
+			fontSize: 15
+		}
 	});
 	var label4 = Titanium.UI.createLabel({
 	    text:'Reps',
 	    textAlign: 'center',
 	    color: 'black',
 	    left: '75%',
-	    width: '10%'
+	    width: '10%',
+	    top: 10,
+	    font: {
+			fontSize: 15
+		}
 	});
 	var label5 = Titanium.UI.createLabel({
 	    text:'Weight',
 	    textAlign: 'center',
 	    color: 'black',
 	    left: '85%',
-	    width: '15%'
+	    width: '15%',
+	    top: 10,
+	    font: {
+			fontSize: 15
+		}
 	});
 	
 	// add headers to data
@@ -90,35 +110,50 @@ if (query.isValidRow())
 		    text: details.fieldByName('exercise'),
 		    color: 'black',
 		    width: '53%',
-		    left: '2%'
+		    left: '2%',
+		    font: {
+				fontSize: 15
+			}
 		});
 		var label2 = Titanium.UI.createLabel({
 		    text: details.fieldByName('time'),
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '55%',
-		    width: '10%'
+		    width: '10%',
+		    font: {
+				fontSize: 15
+			}
 		});
 		var label3 = Titanium.UI.createLabel({
 		    text: details.fieldByName('sets'),
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '65%',
-		    width: '10%'
+		    width: '10%',
+		    font: {
+				fontSize: 15
+			}
 		});
 		var label4 = Titanium.UI.createLabel({
 		    text: details.fieldByName('reps'),
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '75%',
-		    width: '10%'
+		    width: '10%',
+		    font: {
+				fontSize: 15
+			}
 		});
 		var label5 = Titanium.UI.createLabel({
 		    text: details.fieldByName('weight'),
 		    textAlign: 'center',
 		    color: 'black',
 		    left: '85%',
-		    width: '15%'
+		    width: '15%',
+		    font: {
+				fontSize: 15
+			}
 		});
 		row.add(label1);
 		row.add(label2);

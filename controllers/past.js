@@ -73,10 +73,13 @@ date.addEventListener('click', function(e) {
         minDate : new Date(1977, 4, 29),
         maxDate : new Date(2018, 11, 31),
         value : new Date(2014, 3, 12), //make this be current date !!!!!!
-        top : 40,
+        top : 40, 
     });
-	
-	
+    
+	//if (Ti.Platform.osname == "android") 
+	//{
+		//picker.columns[0].width = Ti.Platform.displayCaps.platformWidth;
+	//}	
     var set = Ti.UI.createButton({
         title : 'GO',
         top : 250,
@@ -96,7 +99,6 @@ date.addEventListener('click', function(e) {
     	}
     	var datestring = year + '-' + month + '-' + day;
         date.setValue(datestring);
-        alert(datestring);
         var dateView = Alloy.createController('pastDate', {db:args.db, date:datestring}).getView();
     });
  
