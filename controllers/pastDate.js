@@ -1,15 +1,16 @@
 
 // get the arguments that were passed in.
 var args = arguments[0] || {};
+var date = args.date;
 
-/*// create a window and view for past exercises
-var pastWin = Titanium.UI.createWindow({
+// create a window and view for display of exercises
+var displayWin = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
     layout:'vertical',
     title: 'Past exercises'
 });
 
-var pastview = Titanium.UI.createScrollView({
+var displayview = Titanium.UI.createScrollView({
     scrollType:"vertical",
     left:'0dp',
     width:'100%'
@@ -17,60 +18,14 @@ var pastview = Titanium.UI.createScrollView({
 
 
 // event listener for swipe functionality
-pastview.addEventListener('swipe', function(e){
+displayview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		pastWin.close();
-	}
-});
-*/
-// Create a window and view for workout details
-var detailWin = Titanium.UI.createWindow({
-    backgroundColor: '#F2F2F2',
-    layout:'vertical',
-    title: 'past exercises'
-});
-
-var detailview = Titanium.UI.createView({
-    scrollType:"vertical",
-    left:'0dp',
-    width:'100%'
-});
-
-// event listener for swipe functionality
-detailview.addEventListener('swipe', function(e){
-	if (e.direction == 'right')
-	{
-		detailWin.close();
+		displayWin.close();
 	}
 });
 
-var workout_id;
 
-// variables, where table contents are stored
-var data = [];
-var table;
-
-
-// Event listener for when a workout is chosen
-detailview.addEventListener('click', function (e) {
-	// to make sure a blank area was not clicked
-	if (e.date.value != null)
-	{
-		
-		// change the title of the window
-		detailWin.setTitle(e.date.value);
-		
-		// clear table if previously used
-		if (typeof table != 'undefined' )
-		{
-			detailview.remove(table);
-		}
-		data = [];
-		
-		// get workout_id
-		workout_id = e.date.value;
-		
 		// get previous workouts
 		var details = args.db.execute("SELECT * FROM workout_info where workout_id = ?", workout_id);
 		

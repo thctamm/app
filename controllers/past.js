@@ -83,7 +83,8 @@ date.addEventListener('click', function(e) {
  
     set.addEventListener('click', function(e) {
         date.setValue('' + " col1:" + picker.value );
-        var dateView = Alloy.createController('pastDate', {db:args.db}).getView();
+        alert(date);
+        var dateView = Alloy.createController('pastDate', {db:args.db, date:date}).getView();
     });
  
     pastview.add(picker);
