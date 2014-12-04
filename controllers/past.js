@@ -40,17 +40,13 @@ detailview.addEventListener('swipe', function(e){
 	}
 });
 
-// instantiates calendar ADD LIBRARY FOR AG CALENDAR
-Titanium.Calendar = Ti.Calendar = require("ag.calendar");
-
-Ti.Calendar.dataSource("coredata");
-
-// creates swipeable month calendar view
-var calendarView = Ti.Calendar.createView({
-    top: 0,
-    editable: true,
-    color: "white"
-});
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad") 
+{
+	Titanium.Calendar = Ti.Calendar = require("com.ti.calendar");
+	Ti.Calendar.dataSource("eventkit");
+	
+	var cal = Calendar.createView({color:"lightgray"});
+}
 /*var workout_id;
 
 // variables, where table contents are stored
