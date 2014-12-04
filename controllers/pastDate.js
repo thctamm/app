@@ -27,7 +27,7 @@ displayview.addEventListener('swipe', function(e){
 
 
 		// get previous workouts
-		var details = args.db.execute("SELECT * FROM workout_info where workout_id = ?", workout_id);
+		var details = args.db.execute("SELECT id FROM workout_info where workout_id = ?", workout_id);
 		
 		// generate tabel headers
 		var row = Ti.UI.createTableViewRow({
@@ -153,9 +153,8 @@ displayview.addEventListener('swipe', function(e){
 		detailview.add(del);
 		detailWin.add(detailview);
 		detailWin.open();
-	}
 	
-});
+
 
 // add view to window and open list of workouts.
 detailWin.add(detailview);
