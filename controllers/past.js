@@ -55,7 +55,7 @@ var date = Ti.UI.createTextField({
     color : '#336699',
     top :50,
     left : 100,
-    width : 75,
+    width : 150,
     height : 50,
     hintText : 'choose date',
     editable : false,
@@ -74,6 +74,7 @@ date.addEventListener('click', function(e) {
         maxDate : new Date(2018, 11, 31),
         value : new Date(2014, 3, 12), 
         width: '320dp',
+        height: '500dp',
         top : 40, 
     });
     
