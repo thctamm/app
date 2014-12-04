@@ -150,11 +150,11 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		checkbox2.setHeight(200);
 		checkbox3.setHeight(200);
 		checkbox4.setHeight(200);
-		label1.setHeight(260);
+		label5.setHeight(260);
 		label2.setHeight(260);
 		label3.setHeight(260);
 		label4.setHeight(260);
-		namefield.setHeight(300);
+		nameField.setHeight(300);
 }
 
 //Attach some simple on/off actions

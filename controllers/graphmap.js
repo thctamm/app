@@ -1,11 +1,11 @@
-/**
- * @author Timothy Makalinao
- */
+// get the arguments that were passed in.
+var args = arguments[0] || {};
+
 
 $.chartWebView.addEventListener('load', function() {
 	Ti.API.info('chartWebView ready');
 
-	var title ="Chart Title";
+	var title =args.name;
  	var data = "[{
             name: 'Data1',
             data: [150, 142, 138]
@@ -23,3 +23,4 @@ $.chartWebView.addEventListener('load', function() {
 });
 
 $.graph.open();
+
