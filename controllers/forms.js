@@ -36,6 +36,7 @@ var timer;
 
 // for keeping track of the forms
 var forms = [];
+var timefield;
 
 // for keeping track of the submit button
 var submit_button = null;
@@ -74,6 +75,7 @@ for (z = 0; z < options.length; z++)
 		if (options[z] == 'time')
 		{
 			time_exists = true;
+			timefield = field;
 		}
 	}
 }
@@ -109,7 +111,8 @@ if (time_exists)
 			startstop.setBackgroundColor('red');
 			
 			// start the timer
-			timer = setInterval(timer(), 4000);
+			time = 0;
+			timer = setInterval(stopper, 10);
 			
 		}
 		else
@@ -120,6 +123,12 @@ if (time_exists)
 			
 			// stop the timer
 			clearInterval(timer);
+			timer = null;
+			
+			// set the time field value
+			timefield.setValue(time / 100);
+			
+			
 		}
 	});
 	var reset = $.UI.create('Button', {
@@ -133,13 +142,14 @@ if (time_exists)
 	reset.addEventListener('click', function (e) {
 		
 		// stop the timer if it is on and reset the startstop button
-		if (startstop.getTitle() == 'stop')
+		if (startstop.getTitle() == 'Stop')
 		{
 			clearInterval(timer);
+			timer = null;
 			
 			// change button appearance
 			startstop.setTitle("Start");
-			startstop.setBackgroundColor('green');
+			startstop.setBackgroundColor('green');			
 		}
 		// reset the timer box
 		timebox.setText('00:00:00');
@@ -150,9 +160,9 @@ if (time_exists)
 }
 
 // function for updating the time
-function timer()
+function stopper()
 {
-	time += 10;
+	time += 1;
 	var milliseconds = time % 100;
 	if (milliseconds < 10)
 	{
