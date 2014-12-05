@@ -6,7 +6,7 @@ var title = args.name;
 $.chartWebView.addEventListener('load', function() {
 	Ti.API.info('chartWebView working');
 
- 	var numbers = [];
+ 	//var numbers = [];
  	var points = [];
  	var info = args.db.execute('select * from workout_info where exercise = ?', title);
  	
@@ -19,13 +19,15 @@ $.chartWebView.addEventListener('load', function() {
  		Ti.API.info("Point: " +info.fieldByName(typestr));
  	}
  	
+ 	
+ 	
  	var data = {
  		name: typestr,
- 		numbers: points
+ 		numbers: [points, 10, 10]
  	};
- 	//numbers.push(data);
-    var cat = "['Day 1']";
-    //var cat = "['Day 1', 'Day 2', 'Day 3']";
+ 	//data.push(numbers);
+    //var cat = "['Day 1']";
+    var cat = "['Day 1', 'Day 2', 'Day 3']";
 	//Ti.API.info('Info:' +data);
 	alert(data);
 	alert(data.numbers);
