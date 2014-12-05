@@ -204,7 +204,7 @@ groupview.addEventListener('click', function (e) {
 		editExercises(exercises, secondary, tertiary);
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
-			win.open(exercisesWin,{animated:true});
+			nav.open(exercisesWin,{animated:true});
 		}
 		else
 		{
@@ -240,7 +240,7 @@ endBut.addEventListener('click', function(e) {
 	// close the window
 	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	{
-		win1.close();
+		nav.close();
 	}
 	else
 	{
@@ -321,11 +321,11 @@ mainWin.add(groupview);
 mainWin.add(endview);
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 {
-	var win1 = Titanium.UI.iOS.createNavigationWindow({
+	var nav = Titanium.UI.iOS.createNavigationWindow({
    		window: mainWin,
    		title: "Muscle groups"
 	});
-	win1.open();
+	nav.open();
 }
 else
 {
