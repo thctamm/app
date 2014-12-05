@@ -198,44 +198,62 @@ pastview.addEventListener('click', function (e) {
 			// get previous workouts
 			var details = args.db.execute("SELECT * FROM workout_info where workout_id = ?", workout_id);
 			
-			// generate tabel headers
 			var row = Ti.UI.createTableViewRow({
-			    height:'auto',
+		    	height:'auto',
+		    	backgroundColor: 'gray',
 			});
+			
 			var label1 = Titanium.UI.createLabel({
 			    text:'Exercise',
-			    color: 'black',
+			    color: 'white',
 			    width: '53%',
-			    left: '2%'
+			    left: '2%',
+			    font: {
+					fontSize: 15
+				}
 			});
 			var label2 = Titanium.UI.createLabel({
 			    text:'Time',
 			    textAlign: 'center',
-			    color: 'black',
+			    color: 'white',
 			    left: '55%',
-			    width: '10%'
+			    width: '10%',
+			    font: {
+					fontSize: 13
+				}
 			});
 			var label3 = Titanium.UI.createLabel({
 			    text:'Sets',
 			    textAlign: 'center',
-			    color: 'black',
+			    color: 'white',
 			    left: '65%',
-			    width: '10%'
+			    width: '10%',
+			    font: {
+					fontSize: 13
+				}
 			});
 			var label4 = Titanium.UI.createLabel({
 			    text:'Reps',
 			    textAlign: 'center',
-			    color: 'black',
+			    color: 'white',
 			    left: '75%',
-			    width: '10%'
+			    width: '10%',
+			    font: {
+					fontSize: 13
+				}
 			});
 			var label5 = Titanium.UI.createLabel({
 			    text:'Weight',
 			    textAlign: 'center',
-			    color: 'black',
+			    color: 'white',
 			    left: '85%',
-			    width: '15%'
+			    width: '15%',
+			    font: {
+					fontSize: 13
+				}
 			});
+			
+	
 			
 			// add headers to data
 			row.add(label1);
