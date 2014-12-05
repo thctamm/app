@@ -56,7 +56,7 @@ detailview.addEventListener('swipe', function(e){
 var picker = Ti.UI.createPicker({
     type : Ti.UI.PICKER_TYPE_DATE,
     //useSpinner for Android Only
-    useSpinner : true, 
+    useSpinner : false, 
     minDate : new Date(1977, 4, 29),
     maxDate : new Date(2018, 11, 31),
     value : new Date(), 
