@@ -25,7 +25,7 @@ $.chartWebView.addEventListener('load', function() {
 	 		Ti.API.info("Point: " +info.fieldByName(typestr));
 	 		
 	 		days.push(infodays.fieldByName('timestamp'));
-	 		Ti.API.info("Point: " +infodays.fieldByName('timestamp'));
+	 		Ti.API.info("Day: " +infodays.fieldByName('timestamp'));
  		}
  		info.next();
  	}
