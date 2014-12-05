@@ -341,7 +341,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
 	var leftView = Titanium.UI.createView();
-	leftview.add(back);
+	leftView.add(back);
     nav.leftNavButtons = leftView;
     back.addEventListener('click', function()
     {
