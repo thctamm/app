@@ -8,12 +8,12 @@ var statsWin = Titanium.UI.createWindow({
     left:'100%'
 });
 
-var statsView = Titanium.UI.createView({
+var mainView = Titanium.UI.createView({
     width:'100%'
 });
 
 // event listener for swipe functionality
-statsView.addEventListener('swipe', function(e){
+mainView.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
@@ -30,15 +30,15 @@ statsView.addEventListener('swipe', function(e){
 var total_weight = 0;
 var total_workouts = 0;
 
-// var data = args.db.execute('SELECT * FROM stats');
-// 
-// if (data.isValidRow())
-// {
-	// total_weight = data.fieldByName('weight');
-	// total_workouts = data.fieldByName('workouts');
-// }
-// 
-// data.close();
+var data = args.db.execute('SELECT * FROM stats');
+
+if (data.isValidRow())
+{
+	total_weight = data.fieldByName('weight');
+	total_workouts = data.fieldByName('workouts');
+}
+
+data.close();
 
 var label1 = Titanium.UI.createLabel({
     text:'Total weight lifted: ' + total_weight,
@@ -56,22 +56,22 @@ var label2 = Titanium.UI.createLabel({
     height: 30
 });
 
-// var most_used = args.db.execute('SELECT * FROM list where used > 0 ORDER BY used DESC LIMIT 1');
-// 
-// if (most_used.isValidRow())
-// {
-	// var label3 = Titanium.UI.createLabel({
-	    // text:'Most used exercise: ' + most_used.fieldByName('name') + ', ' + most_used.fieldByName('used') + ' times',
-	    // color: 'black',
-	    // left: 10,
-	    // top: 90,
-	    // height: 30
-	// });	
-	// statsView.add(label3);
-// }
+var most_used = args.db.execute('SELECT * FROM list where used > 0 ORDER BY used DESC LIMIT 1');
 
-statsView.add(label1);
-statsView.add(label2);
+if (most_used.isValidRow())
+{
+	var label3 = Titanium.UI.createLabel({
+	    text:'Most used exercise: ' + most_used.fieldByName('name') + ', ' + most_used.fieldByName('used') + ' times',
+	    color: 'black',
+	    left: 10,
+	    top: 90,
+	    height: 30
+	});	
+	mainView.add(label3);
+}
+
+mainView.add(label1);
+mainView.add(label2);
 statsWin.add(statsView);
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 {
