@@ -72,7 +72,7 @@ if (most_used.isValidRow())
 
 mainView.add(label1);
 mainView.add(label2);
-statsWin.add(statsView);
+statsWin.add(mainView);
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 {
 	var nav = Titanium.UI.iOS.createNavigationWindow({
