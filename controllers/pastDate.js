@@ -21,7 +21,14 @@ var displayview = Titanium.UI.createScrollView({
 displayview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		displayWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			displayWin.close();
+		}
 	}
 });
 
@@ -216,11 +223,36 @@ if (query.isValidRow())
 	displayview.add(table);
 	displayview.add(del);
 	displayWin.add(displayview);
-	displayWin.open();
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		var nav = Titanium.UI.iOS.createNavigationWindow({
+	   		window: pastWin,
+	   		title: "Muscle groups"
+		});
+		var back = Titanium.UI.createButton({title:'Back'});
+	    pastWin.leftNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	       nav.close();
+	    });
+		    
+		nav.open();
+	}
+	else
+	{
+		displayWin.open();
+	}
 }
 
 else 
 {
 	alert("No workout on this day");
-	displayWin.close();
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		nav.close();
+	}
+	else
+	{
+		displayWin.close();
+	}
 }

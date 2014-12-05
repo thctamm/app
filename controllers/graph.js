@@ -213,7 +213,7 @@ function editData(data)
 		}
 	}
 	// close the query info
-	//data.close();
+	data.close();
 }
 
 // create a window and view for muscle groups

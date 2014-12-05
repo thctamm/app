@@ -87,7 +87,7 @@ var statsBut = $.UI.create('Button', {
 });
 
 statsBut.addEventListener('click', function(e) {
-	var statsView = Alloy.createController('stats', {db:db}).getView();
+	var statsView = Alloy.createController('statistics', {db:db}).getView();
 });
 
 var graphBut = $.UI.create('Button', {

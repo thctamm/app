@@ -28,7 +28,14 @@ var pastview = Titanium.UI.createScrollView({
 pastview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		pastWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			pastWin.close();
+		}
 	}
 });
 
@@ -49,7 +56,14 @@ var detailview = Titanium.UI.createView({
 detailview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		detailWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			detailWin.close();
+		}
 	}
 });
 
@@ -346,11 +360,36 @@ pastview.addEventListener('click', function (e) {
 			detailview.add(table);
 			detailview.add(del);
 			detailWin.add(detailview);
-			detailWin.open();
+			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+			{
+				nav.openWindow(detailWin,{animated:true});
+			}
+			else
+			{
+				detailWin.open();
+			}
 		}
 	}
 });
 
 // add view to window and open list of workouts.
 pastWin.add(pastview);
-pastWin.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: pastWin,
+   		title: "Muscle groups"
+	});
+	var back = Titanium.UI.createButton({title:'Back'});
+    pastWin.leftNavButton = back;
+    back.addEventListener('click', function()
+    {
+       nav.close();
+    });
+	    
+	nav.open();
+}
+else
+{
+	pastWin.open();
+}
