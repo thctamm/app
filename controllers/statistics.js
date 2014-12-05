@@ -4,7 +4,7 @@ var args = arguments[0] || {};
 var Win = Titanium.UI.createWindow({
     backgroundColor: '#F2F2F2',
     layout:'vertical',
-    title: 'Add Exercise'
+    title: 'Statistics'
 });
 
 var View = Titanium.UI.createView({
@@ -30,7 +30,30 @@ var label1 = Titanium.UI.createLabel({
     height: 30
 });
 
+var label2 = Titanium.UI.createLabel({
+    text:'Total number of workouts: ' + total_workouts,
+    color: 'black',
+    left: 10,
+    top: 50,
+    height: 30
+});
+
+var most_used = args.db.execute('SELECT * FROM list where used > 0 ORDER BY used DESC LIMIT 1');
+
+if (most_used.isValidRow())
+{
+	var label3 = Titanium.UI.createLabel({
+	    text:'Most used exercise: ' + most_used.fieldByName('name') + ', ' + most_used.fieldByName('used') + ' times',
+	    color: 'black',
+	    left: 10,
+	    top: 90,
+	    height: 30
+	});	
+	View.add(label3);
+}
+
 View.add(label1);
+View.add(label2);
 Win.add(View);
 
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
