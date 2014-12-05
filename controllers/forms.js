@@ -405,6 +405,7 @@ submit.addEventListener('click', function (e) {
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
 			args.nav.closeWindow(args.Win ,{animated:true});
+			nav.close();
 		}
 		else
 		{
