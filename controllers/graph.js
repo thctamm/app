@@ -283,7 +283,14 @@ var endview = Titanium.UI.createScrollView({
 exercisesview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		exercisesWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			exercisesWin.close();
+		}
 	}
 });
 
@@ -291,7 +298,14 @@ exercisesview.addEventListener('swipe', function(e){
 dataview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		dataWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			dataWin.close();
+		}
 	}
 });
 
