@@ -131,7 +131,14 @@ var groupview = Titanium.UI.createScrollView({
 groupview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
 		mainWin.close();
+		}
 	}
 });
 
@@ -163,7 +170,14 @@ exercisesview.addEventListener('click', function(e) {
 exercisesview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
 		exercisesWin.close();
+		}
 	}
 });
 
@@ -325,6 +339,12 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
    		window: mainWin,
    		title: "Muscle groups"
 	});
+	var back = Titanium.UI.createButton({title:'Back'});
+	    nav.leftNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	       nav.close();
+	    });
 	nav.open();
 }
 else

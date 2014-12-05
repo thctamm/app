@@ -1,5 +1,3 @@
-//comment
-
 var args = arguments[0] || {};
 
 // Create a window and view for stats
@@ -19,7 +17,14 @@ var statsView = Titanium.UI.createView({
 statsView.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
 		statsWin.close();
+		}
 	}
 });
 
@@ -69,4 +74,21 @@ if (most_used.isValidRow())
 statsView.add(label1);
 statsView.add(label2);
 statsWin.add(statsView);
-statsWin.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: statsWin,
+   		title: "Statistics"
+	});
+	var back = Titanium.UI.createButton({title:'Back'});
+	    nav.leftNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	       nav.close();
+	    });
+	nav.open();
+}
+else
+{
+	statsWin.open();
+}

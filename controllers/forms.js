@@ -21,7 +21,7 @@ else
 		});
 		var back = Titanium.UI.createButton({title:'Back'});
 	    nav.leftNavButton = back;
-	    b.addEventListener('click', function()
+	    back.addEventListener('click', function()
 	    {
 	       nav.close();
 	    });
@@ -42,7 +42,14 @@ var formsview = Titanium.UI.createView({
 formsview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
 		formsWin.close();
+		}
 	}
 });
 
@@ -418,7 +425,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
     nav.leftNavButton = back;
-    b.addEventListener('click', function()
+    back.addEventListener('click', function()
     {
        nav.close();
     });

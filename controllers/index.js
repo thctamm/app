@@ -68,22 +68,6 @@ pastBut.addEventListener('click', function(e) {
 	var pastView = Alloy.createController('past', {db:db}).getView();
 });
 
-// button for adding an exercise if iOS
-if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad") 
-{
-	var addBut = $.UI.create('Button', {
-	    bottom: 10,
-	    title: 'Add exercise',
-	    id: 'button'
-	});
-	
-	addBut.addEventListener('click', function(e) {
-		var addView = Alloy.createController('add', {db:db}).getView();
-	});
-	
-	indexView.add(addBut);
-}
-
 // button for ending a workout
 var endBut = $.UI.create('Button', {
     top: 210,
@@ -238,4 +222,21 @@ Ti.App.addEventListener('workout_ended', function(e){
 
 // open the index window
 indexWin.add(indexView);
-indexWin.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: indexWin,
+   		title: "Gym app"
+	});
+	var back = Titanium.UI.createButton({title:'Add exercise'});
+	    nav.rightNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	      var addView = Alloy.createController('add', {db:db}).getView();
+	    });
+	nav.open();
+}
+else
+{
+	indexWin.open();
+}

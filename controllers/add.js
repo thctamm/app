@@ -339,4 +339,21 @@ addView.add(label5);
 addView.add(nameField);
 addView.add(submit);
 addWin.add(addView);
-addWin.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: addWin,
+   		title: "Muscle groups"
+	});
+	var back = Titanium.UI.createButton({title:'Back'});
+	    nav.leftNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	       nav.close();
+	    });
+	nav.open();
+}
+else
+{
+	addWin.open();
+}
