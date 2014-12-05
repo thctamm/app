@@ -3,7 +3,7 @@ Class - Computer Science 50
 Professor - Dr. David Malan
 Teaching Fellows - Wes Chen, Robbie Gibson, and Chris Lim
 
-Title - Gym App *Temporary
+Title - Gym App **Temporary
 Type - Mobile Application
 Enabled Devices - All iOS and Android Devices
 
@@ -24,15 +24,25 @@ Main Menu Options
 
 Lets Explore the Main Menu Options
 
-New Workout
-Clicking new workout brings the user to a new window with the Muscle Groups in your body. This window also includes three buttons in the bottom of the
-window called Favorites, Most Used, and End Workout.
+New Workout:Clicking new workout brings the user to a new window with the Muscle Groups in your body. This initializes a new workout for the user.
+This window also includes three buttons in the bottom of the window called Favorites, Most Used, and End Workout.
 - Muscle Group Buttons
 - Favorites
 - Most Used
 - End Workout
 	
 	Muscle Group Buttons: Clicking on a Muscle Group brings the user to the a new window that contains all the exercises associated with that muscle. 
+	- Exercise Buttons
+	
+	Favorites: Clicking on Favorites opens up a window that contains all the user's favorite exercises which were saved from previous workouts where 
+	the user indicated that an exercise they previously did was a Favorite Exercise. This window allows the user to directly access his or her favorite
+	exercise.
+	- Exercise Buttons
+	
+	Most Used: Clicking on Most Used opens up a window that contains all the user's most used exercises. This data is gathered from all the previous workouts
+	of the user, and are the exercises that the user uses the most. This window allows the user to directly access his or her Most Used
+	exercise.
+	- Exercise Buttons
 	
 		Exercise Buttons: Clicking on an Excercise in the window brings the user to a window which allows the user to input their data for that exercise.
 		Depending on what exercise you click, the data may include:
@@ -44,16 +54,75 @@ window called Favorites, Most Used, and End Workout.
 		to the Muscle Group Window where you can continue your workout.
 		
 		- Favorite Exercise: The user is given a chance to check the exercise as a favorite exercise which will be saved for the user.
+		
+	End Workout: Clicking End Workout ends the user's current workout, and saves it on Past Workouts. After ending the workout the user is automatically 
+	brought to the Main Menu.
 	
+	
+Past Workouts: Clicking past workouts brings the user to a calender wheel to select a date of past workouts, and gives the user a list of all recent workouts.
+- Calendar Wheel
+- Recent Workouts
+
+	Calendar Wheel: The calendar wheel allows you to scroll to different dates on the calendar, and choose a data from a past workout. If there is a workout
+	the app brings you to a Data Page about that workout. If there are no workouts on that date, Gym App** sends you an alert that there were no workouts. 
+	
+	Recent Workout Dates: Clicking on a recent workout brings you to a Data Page about that workout.
+	- Data Page
+	
+		Data Page: The data page gives the user a list of all the exercises that were completed in that workout, and the amount of sets, reps, weight, and
+		time done or spent in that workout. The user is also given the ability to Delete that workout.
+		- Delete Button
+		
+			Delete Button: Clcking this button deletes the workout and all its information from the app. 
+			
+			
+Statistics: Clicking Statitics gives you information on the total amount of weight lifted, most used exercise, and the total number of workouts done
+
+Graph: Clicking Graph brings the user to a new window with the Muscle Groups in your body. Graph initializes the graphing feature of the exercises.
+This window also includes two buttons in the bottom of the window called Favorites and Most Used.
+- Muscle Group Buttons
+- Favorites
+- Most Used
+
+	Muscle Group Buttons: Clicking on a Muscle Group brings the user to the a new window that contains all the exercises associated with that muscle. 
+	- Exercise Buttons
+	
+		Exercise Buttons: Clicking on an Excercise in the window brings the user to a window which allows the user to input their data for that exercise.
+		Depending on what exercise you click, the data may include:
+		
+		
 	Favorites: Clicking on Favorites opens up a window that contains all the user's favorite exercises which were saved from previous workouts where 
 	the user indicated that an exercise they previously did was a Favorite Exercise. This window allows the user to directly access his or her favorite
-	exercise.
+	exercise, and allows the user to click on an exercise to graph data about the exercise.
+	- Exercise Buttons
 	
 	Most Used: Clicking on Most Used opens up a window that contains all the user's most used exercises. This data is gathered from all the previous workouts
 	of the user, and are the exercises that the user uses the most. This window allows the user to directly access his or her Most Used
 	exercise.
-	
-	End Workout: Clicking End Workout ends the user's current workout, and saves it on Past Workouts. After ending the workout the user is automatically 
-	brought to the Main Menu.
+	- Exercise Buttons
+		
+		Exercise Buttons: Clicking on the an Exercise Button brings the user to all the different types of data or input associated with that exercise, that
+		you want graphed.
+		- Sets
+		- Reps
+		- Weight
+		- Time
+		
+			Graphing Features: Our graph is VERY Intuitive, the graph allows you to click on data points, take out the graphed line, and zoom in on the graph.
+			
+			Sets: When sets is clicked the Gym App*** graphs the amount of sets you have done on that exercise, and gives you a line chart with the dates
+			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
+			
+			Reps: When sets is clicked the Gym App*** graphs the amount of reps you have done on that exercise, and gives you a line chart with the dates
+			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
+			
+			Weight: When sets is clicked the Gym App*** graphs the amount of weight you have done on that exercise, and gives you a line chart with the dates
+			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
+			
+			Time: When sets is clicked the Gym App*** graphs the amount of time you have spent on that exercise, and gives you a line chart with the dates
+			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
+			
+
+
 		
 		
