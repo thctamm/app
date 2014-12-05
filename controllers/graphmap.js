@@ -1,6 +1,6 @@
 // get the arguments that were passed in.
 var args = arguments[0] || {};
-var type = args.type;
+var typestr = args.type;
 var title = args.name;
 
 $.chartWebView.addEventListener('load', function() {
@@ -15,18 +15,23 @@ $.chartWebView.addEventListener('load', function() {
  	//stops running here
  	if(info.isValidRow())
  	{
- 		points.push(info.fieldByName(type));
- 		Ti.API.info("Point: " +info.fieldByName(type));
+ 		points.push(info.fieldByName(typestr));
+ 		Ti.API.info("Point: " +info.fieldByName(typestr));
  	}
- 	var data = [{
- 		name: type,
- 		numbers: points
- 	}];
  	
- 	//data.push(line);
+ 	var data = {
+ 		name: typestr,
+ 		numbers: points
+ 	};
+ 	//numbers.push(data);
     var cat = "['Day 1']";
     //var cat = "['Day 1', 'Day 2', 'Day 3']";
-	Ti.API.info('Info:' +data);
+	//Ti.API.info('Info:' +data);
+	alert(data);
+	alert(data.numbers);
+	alert(data.name);
+	alert(title);
+	
 	Ti.API.info('Info:' +data.numbers);
 	Ti.API.info('Info:' +data.name);
 	Ti.API.info('Info:' +cat);

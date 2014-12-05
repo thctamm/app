@@ -205,10 +205,9 @@ function editData(data)
 				dataview.add(weightBut);
 		
 				weightBut.addEventListener('click', function(e) {
-				var weightView = Alloy.createController('graphmap', {db:args.db, type: 'weight', name: data.fieldByName('name')}).getView();
+				var weightView = Alloy.createController('graphmap', {db:args.db, type: "weight", name: data.fieldByName('name')}).getView();
 				});
-				//Ti.API.info("Point: " +data.fieldByName('name'));
-				alert(data.fieldByName('name'));
+				
 				k++;
 	
 		}
