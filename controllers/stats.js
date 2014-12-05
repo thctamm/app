@@ -9,7 +9,6 @@ var statsWin = Titanium.UI.createWindow({
 });
 
 var statsView = Titanium.UI.createView({
-    left:'0dp',
     width:'100%'
 });
 
@@ -31,15 +30,15 @@ statsView.addEventListener('swipe', function(e){
 var total_weight = 0;
 var total_workouts = 0;
 
-var data = args.db.execute('SELECT * FROM stats');
-
-if (data.isValidRow())
-{
-	total_weight = data.fieldByName('weight');
-	total_workouts = data.fieldByName('workouts');
-}
-
-data.close();
+// var data = args.db.execute('SELECT * FROM stats');
+// 
+// if (data.isValidRow())
+// {
+	// total_weight = data.fieldByName('weight');
+	// total_workouts = data.fieldByName('workouts');
+// }
+// 
+// data.close();
 
 var label1 = Titanium.UI.createLabel({
     text:'Total weight lifted: ' + total_weight,
