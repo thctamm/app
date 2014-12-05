@@ -270,11 +270,15 @@ pastview.addEventListener('click', function (e) {
 				    height:'auto',
 				});
 				var label1 = Titanium.UI.createLabel({
-				    text: details.fieldByName('exercise'),
-				    color: 'black',
-				    width: '53%',
-				    left: '2%'
+			    text: details.fieldByName('exercise'),
+			    color: 'black',
+			    width: '53%',
+			    left: '2%',
+			    font: {
+					fontSize: 15
+				}
 				});
+				
 				var label2 = Titanium.UI.createLabel({
 				    text: details.fieldByName('time'),
 				    textAlign: 'center',
