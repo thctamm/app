@@ -62,5 +62,21 @@ $.chartWebView.addEventListener('load', function() {
 
 
 });
-
-$.graphmap.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: $.graphmap,
+   		title: title,
+	});
+	var back = Titanium.UI.createButton({title:'Back'});
+	    $.graphmap.leftNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	       nav.close();
+	    });
+	nav.open();
+}
+else
+{
+	$.graphmap.open();
+}

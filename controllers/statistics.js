@@ -11,6 +11,21 @@ var View = Titanium.UI.createView({
 	left: 0,
 });
 
+// event listener for swipe functionality
+View.addEventListener('swipe', function(e){
+	if (e.direction == 'right')
+	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			Win.close();
+		}
+	}
+});
+
 var total_weight = 0;
 var total_workouts = 0;
 
@@ -43,13 +58,22 @@ var most_used = args.db.execute('SELECT * FROM list where used > 0 ORDER BY used
 if (most_used.isValidRow())
 {
 	var label3 = Titanium.UI.createLabel({
-	    text:'Most used exercise: ' + most_used.fieldByName('name') + ', ' + most_used.fieldByName('used') + ' times',
+	    text:'Most used exercise: ',
 	    color: 'black',
 	    left: 10,
 	    top: 90,
 	    height: 30
 	});	
 	View.add(label3);
+	
+	var label4 = Titanium.UI.createLabel({
+	    text:most_used.fieldByName('name') + ', ' + most_used.fieldByName('used') + ' times',
+	    color: 'black',
+	    left: 10,
+	    top: 130,
+	    height: 30
+	});	
+	View.add(label4);
 }
 
 View.add(label1);
