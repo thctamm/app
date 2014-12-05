@@ -228,9 +228,9 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
    		window: indexWin,
    		title: "Gym app"
 	});
-	var back = Titanium.UI.createButton({title:'Add exercise'});
-	    indexWin.rightNavButton = back;
-	    back.addEventListener('click', function()
+	var add_exercise = Titanium.UI.createButton({title:'Add exercise'});
+	    indexWin.rightNavButton = add_exercise;
+	    add_exercise.addEventListener('click', function()
 	    {
 	      var addView = Alloy.createController('add', {db:db}).getView();
 	    });

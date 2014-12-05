@@ -1,6 +1,8 @@
-// get the arguments that were passed in.
+// get the database arguments that were passed in.
 var args = arguments[0] || {};
+// gets the type of graph (time, sets, reps, weight)
 var typestr = args.type;
+
 var title = args.name;
 
 $.chartWebView.addEventListener('load', function() {
@@ -42,10 +44,7 @@ $.chartWebView.addEventListener('load', function() {
  		}
  	 }
  	 	data = data + "]}]";
-	
-	// two weeks for graph
-    //var cat = "['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12', 'Day 13', 'Day 14']";
-	
+
 	var cat = "['";
 	
  	for (k = 0; k < days.length; k++)
