@@ -23,17 +23,7 @@ addView.addEventListener('swipe', function(e){
 	{
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
-			var nav = Titanium.UI.iOS.createNavigationWindow({
-		   		window: formsWin,
-		   		title: args.title
-			});
-			var back = Titanium.UI.createButton({title:'Back'});
-		    nav.leftNavButton = back;
-		    back.addEventListener('click', function()
-		    {
-		       nav.close();
-		    });
-			nav.open();
+			nav.close();
 		}
 		else
 		{
