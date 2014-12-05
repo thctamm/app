@@ -13,14 +13,31 @@ What is our App?
 Our app is a mobile gym application that allows the user to keep track of your workouts and progress at the gym.
 
 App Documentation
+
+Overall App Features:
+- Swipe Feature
+- Navigation Bar for iOS
+- Remember Workout
+
+	Swipe Feature: At any time throughout the app the user can Swipe Right in order to return to the previous window!
+	
+	Navigation Bar for iOS: Only for iOS we have a Navigation Bar on the top of all the Windows that allows you to press back in order to access
+	the previous window. (Android automaticall has the back feature)
+	
+	Remember Workout: The user can close the App and it will automatically remember if you are on a Current Workout. 
+
 Main Menu Options
-	New Workout
-	Past Workouts
-	Statistics
-	Graph
-	Continue Workout*
-	End Workout*
-	*Buttons only available when New Workout has been previously initialized.
+- New Workout
+- Past Workouts
+- Statistics
+- Graph
+- Add Exercise**
+- Continue Workout*
+- End Workout*
+
+*Buttons only available when New Workout has been previously initialized.
+** Add Exercise is located on the Top Right Corner of the main page.
+
 
 Lets Explore the Main Menu Options
 
@@ -49,7 +66,8 @@ This window also includes three buttons in the bottom of the window called Favor
 		- Sets: Manually input the amount of sets the user did in the exercise.
 		- Reps: Manually input the amount of reps the user did in that execrise.
 		- Weight: Manaully input the amount of weight the user did in that exercise.
-		- Time: Manually input the amount of time the user spent on that exercise.
+		- Timer: Initializes a timer, and keeps track of the amount of time the user spent on that exercise. When the timer is stopped it automatically adds
+		  the time to the corresponding field for submittion. 
 		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
 		to the Muscle Group Window where you can continue your workout.
 		
@@ -114,14 +132,24 @@ This window also includes two buttons in the bottom of the window called Favorit
 			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
 			
 			Reps: When sets is clicked the Gym App*** graphs the amount of reps you have done on that exercise, and gives you a line chart with the dates
-			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
+			you did that exercise as the X-Axis and the amount of reps you did as the Y-Axis
 			
 			Weight: When sets is clicked the Gym App*** graphs the amount of weight you have done on that exercise, and gives you a line chart with the dates
-			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
+			you did that exercise as the X-Axis and the amount of weight you did as the Y-Axis
 			
 			Time: When sets is clicked the Gym App*** graphs the amount of time you have spent on that exercise, and gives you a line chart with the dates
 			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
-			
+
+Add Exercise: When Add Exercise is clicked the user is brought to a window which allows you to add an exercise in a muscle group. The user chooses what 
+muscle group the exercise is in, and then marks down whether the exercise is associated with sets, reps, weight, and/or time. The exercise is then saved
+in our database, and the user has access to pick this exercise when they are doing a workout. 
+
+Continue Workout: Continue workout allows the user to continue their workout that they are currently on if they had gone back to the main window or closed
+the app.
+
+End Workout: End Workout closes the current workout the user is on, and puts the workout in the Past Workouts.
+
+Thank you for reading our Documentation. 
 
 
 		
