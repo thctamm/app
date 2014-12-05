@@ -9,7 +9,7 @@ var displayWin = Titanium.UI.createWindow({
     layout:'vertical',
     title: date
 });
-
+// fix
 var displayview = Titanium.UI.createScrollView({
     scrollType:"vertical",
     left:'0dp',
