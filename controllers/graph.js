@@ -344,13 +344,6 @@ groupview.addEventListener('click', function (e) {
 		
 		// edit the exercisesview and open the window
 		editExercises(exercises, secondary, tertiary);
-		// open the window
-		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
-		{
-			nav.openWindow(exercisesWin,{animated:true});
-		}
-		else
-		{
 			exercisesWin.open();
 		}
 	}
@@ -481,7 +474,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
    		title: "Muscle groups"
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
-	    addWin.leftNavButton = back;
+	    mainWin.leftNavButton = back;
 	    back.addEventListener('click', function()
 	    {
 	       nav.close();
