@@ -325,6 +325,10 @@ Ti.App.addEventListener('favorites_updated', function(e){
 	}	
 });
 
+Ti.App.addEventListener('submitted', function(e){
+	nav.closeWindow(exercisesWin);
+});
+
 // add the buttons to the view
 endview.add(endBut);
 endview.add(favoritesBut);
