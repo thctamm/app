@@ -345,7 +345,15 @@ groupview.addEventListener('click', function (e) {
 		// edit the exercisesview and open the window
 		editExercises(exercises, secondary, tertiary);
 		{
-			exercisesWin.open();
+			// open the window
+			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+			{
+				nav.openWindow(exercisesWin,{animated:true});
+			}
+			else
+			{
+				exercisesWin.open();
+			}
 		}
 	}
 });
