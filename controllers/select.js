@@ -285,7 +285,14 @@ favoritesBut.addEventListener('click', function(e) {
 	editExercises(exercises);
 		
 	// open the window
-	exercisesWin.open();
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		nav.openWindow(exercisesWin,{animated:true});
+	}
+	else
+	{
+		exercisesWin.open();
+	}
 });
 
 // button for top exercises
@@ -310,8 +317,15 @@ topBut.addEventListener('click', function(e) {
 	var exercises = args.db.execute("SELECT * FROM list where used > 0 ORDER BY used DESC limit 15");
 	editExercises(exercises);
 	
-	// open the winow
-	exercisesWin.open();
+	// open the window
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		nav.openWindow(exercisesWin,{animated:true});
+	}
+	else
+	{
+		exercisesWin.open();
+	}
 });
 
 // app event listener to check if favorites have been updated

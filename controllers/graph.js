@@ -344,7 +344,15 @@ groupview.addEventListener('click', function (e) {
 		
 		// edit the exercisesview and open the window
 		editExercises(exercises, secondary, tertiary);
-		exercisesWin.open();
+		// open the window
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.openWindow(exercisesWin,{animated:true});
+		}
+		else
+		{
+			exercisesWin.open();
+		}
 	}
 });
 
@@ -360,10 +368,24 @@ exercisesview.addEventListener('click', function (e) {
 		// get the relevant exercises from the database
 		var data = args.db.execute("SELECT * FROM list where name = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
 		
-		// PUT IN CHECK FOR DATA EMPTY
-		// edit the exercisesview and open the window
-		editData(data);
-		dataWin.open();
+		if (data.isValidRow())
+		{
+			// edit the exercisesview and open the window
+			editData(data);
+			// open the window
+			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+			{
+				nav.openWindow(dataWin,{animated:true});
+			}
+			else
+			{
+				dataWin.open();
+			}
+		}
+		else
+		{
+			alert("error");
+		}
 	}
 });
 
@@ -392,7 +414,14 @@ favoritesBut.addEventListener('click', function(e) {
 	editExercises(exercises);
 		
 	// open the window
-	exercisesWin.open();
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		nav.openWindow(exercisesWin,{animated:true});
+	}
+	else
+	{
+		exercisesWin.open();
+	}
 });
 
 // button for top exercises
@@ -417,8 +446,15 @@ topBut.addEventListener('click', function(e) {
 	var exercises = args.db.execute("SELECT * FROM list where used > 0 ORDER BY used DESC limit 15");
 	editExercises(exercises);
 	
-	// open the winow
-	exercisesWin.open();
+	// open the window
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		nav.openWindow(exercisesWin,{animated:true});
+	}
+	else
+	{
+		exercisesWin.open();
+	}
 });
 
 // app event listener to check if favorites have been updated
@@ -438,5 +474,22 @@ endview.add(topBut);
 // add the views to the main window and open it
 mainWin.add(groupview);
 mainWin.add(endview);
-mainWin.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: mainWin,
+   		title: "Muscle groups"
+	});
+	var back = Titanium.UI.createButton({title:'Back'});
+	    addWin.leftNavButton = back;
+	    back.addEventListener('click', function()
+	    {
+	       nav.close();
+	    });
+	nav.open();
+}
+else
+{
+	mainWin.open();
+}
 
