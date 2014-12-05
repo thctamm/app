@@ -340,7 +340,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
    		title: "Muscle groups"
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
-    mainWin.leftNavButton = leftView;
+    mainWin.leftNavButton = back;
     back.addEventListener('click', function()
     {
        nav.close();
