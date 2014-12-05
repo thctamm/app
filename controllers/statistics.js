@@ -33,7 +33,7 @@ var total_workouts = 0;
 // });
 
 // View.add(label1);
-win.add(View);
+Win.add(View);
 
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 {

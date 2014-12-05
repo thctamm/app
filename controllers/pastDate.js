@@ -226,7 +226,7 @@ if (query.isValidRow())
 	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	{
 		var nav = Titanium.UI.iOS.createNavigationWindow({
-	   		window: pastWin,
+	   		window: displayWin,
 	   		title: "Muscle groups"
 		});
 		var back = Titanium.UI.createButton({title:'Back'});
