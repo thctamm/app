@@ -165,7 +165,7 @@ pastview.addEventListener('click', function (e) {
 		else
 		{
 			// change the title of the window
-			detailWin.setTitle(datestring);
+			detailWin.setTitle(e.source.title);
 			
 			// clear table if previously used
 			if (typeof table != 'undefined' )

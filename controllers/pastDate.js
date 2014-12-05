@@ -42,7 +42,7 @@ if (query.isValidRow())
 		});
 		
 		var label0 = Titanium.UI.createLabel({
-		    text:query.fieldByName('timestamp'),
+		    text:query.fieldByName('dmy'),
 		    color: 'black',
 		    textAlign: 'center',
 		    right: '2%',
