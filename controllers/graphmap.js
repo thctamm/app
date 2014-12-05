@@ -16,7 +16,7 @@ $.chartWebView.addEventListener('load', function() {
  	Ti.API.info('DB Output:' +info.isValidRow());
  	
  	//stops running here
- 	while(info.isValidRow());
+ 	while(info.isValidRow())
  	{
  		var infodays = args.db.execute('select * from workouts where id = ?', info.fieldByName('workout_id'));
  		if (infodays.isValidRow())
