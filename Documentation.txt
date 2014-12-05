@@ -1,0 +1,59 @@
+Developers - Timothy Tamm, Sofia Shaprio, and Timothy Makalinao
+Class - Computer Science 50 
+Professor - Dr. David Malan
+Teaching Fellows - Wes Chen, Robbie Gibson, and Chris Lim
+
+Title - Gym App *Temporary
+Type - Mobile Application
+Enabled Devices - All iOS and Android Devices
+
+Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or the Titanium App Compiler.
+
+What is our App?
+Our app is a mobile gym application that allows the user to keep track of your workouts and progress at the gym.
+
+App Documentation
+Main Menu Options
+	New Workout
+	Past Workouts
+	Statistics
+	Graph
+	Continue Workout*
+	End Workout*
+	*Buttons only available when New Workout has been previously initialized.
+
+Lets Explore the Main Menu Options
+
+New Workout
+Clicking new workout brings the user to a new window with the Muscle Groups in your body. This window also includes three buttons in the bottom of the
+window called Favorites, Most Used, and End Workout.
+- Muscle Group Buttons
+- Favorites
+- Most Used
+- End Workout
+	
+	Muscle Group Buttons: Clicking on a Muscle Group brings the user to the a new window that contains all the exercises associated with that muscle. 
+	
+		Exercise Buttons: Clicking on an Excercise in the window brings the user to a window which allows the user to input their data for that exercise.
+		Depending on what exercise you click, the data may include:
+		- Sets: Manually input the amount of sets the user did in the exercise.
+		- Reps: Manually input the amount of reps the user did in that execrise.
+		- Weight: Manaully input the amount of weight the user did in that exercise.
+		- Time: Manually input the amount of time the user spent on that exercise.
+		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
+		to the Muscle Group Window where you can continue your workout.
+		
+		- Favorite Exercise: The user is given a chance to check the exercise as a favorite exercise which will be saved for the user.
+	
+	Favorites: Clicking on Favorites opens up a window that contains all the user's favorite exercises which were saved from previous workouts where 
+	the user indicated that an exercise they previously did was a Favorite Exercise. This window allows the user to directly access his or her favorite
+	exercise.
+	
+	Most Used: Clicking on Most Used opens up a window that contains all the user's most used exercises. This data is gathered from all the previous workouts
+	of the user, and are the exercises that the user uses the most. This window allows the user to directly access his or her Most Used
+	exercise.
+	
+	End Workout: Clicking End Workout ends the user's current workout, and saves it on Past Workouts. After ending the workout the user is automatically 
+	brought to the Main Menu.
+		
+		
