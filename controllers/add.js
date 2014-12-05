@@ -21,7 +21,24 @@ var addView = Titanium.UI.createView({
 addView.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
-		addWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			var nav = Titanium.UI.iOS.createNavigationWindow({
+		   		window: formsWin,
+		   		title: args.title
+			});
+			var back = Titanium.UI.createButton({title:'Back'});
+		    nav.leftNavButton = back;
+		    back.addEventListener('click', function()
+		    {
+		       nav.close();
+		    });
+			nav.open();
+		}
+		else
+		{
+			addWin.close();
+		}
 	}
 });
 
@@ -316,7 +333,14 @@ submit.addEventListener('click', function (e) {
 		args.db.execute(query);
 		
 		// return to the main view
-		addWin.close();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+			addWin.close();
+		}
 	}
 	
 	// if fields haven't been filled alert the user
