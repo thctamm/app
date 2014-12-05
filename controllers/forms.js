@@ -23,7 +23,7 @@ else
 	    nav.leftNavButton = back;
 	    b.addEventListener('click', function()
 	    {
-	       formsWin.close();
+	       nav.close();
 	    });
 		nav.open();
 	}
@@ -410,4 +410,21 @@ chosen.close();
 
 // add the view to the window and open the window
 formsWin.add(formsview);
-formsWin.open();
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var nav = Titanium.UI.iOS.createNavigationWindow({
+   		window: formsWin,
+   		title: args.title
+	});
+	var back = Titanium.UI.createButton({title:'Back'});
+    nav.leftNavButton = back;
+    b.addEventListener('click', function()
+    {
+       nav.close();
+    });
+	nav.open();
+}
+else
+{
+	formsWin.open();
+}
