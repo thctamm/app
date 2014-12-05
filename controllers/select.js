@@ -189,8 +189,10 @@ groups.close();
 // event listener for when a muscle group button is pressed
 groupview.addEventListener('click', function (e) {
 	// to make sure a blank area was not clicked
+	alert('test1');
 	if (e.source.title != null)
 	{
+		alert(e.source.title);
 		
 		// change the title of the exercise win
 		exercisesWin.setTitle(e.source.title);
