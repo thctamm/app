@@ -189,6 +189,7 @@ pastview.addEventListener('click', function (e) {
 			{
 				detailview.remove(table);
 			}
+			
 			data = [];
 			
 			// get workout_id
