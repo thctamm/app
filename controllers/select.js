@@ -189,10 +189,8 @@ groups.close();
 // event listener for when a muscle group button is pressed
 groupview.addEventListener('click', function (e) {
 	// to make sure a blank area was not clicked
-	alert('test1');
 	if (e.source.title != null)
 	{
-		alert(e.source.title);
 		
 		// change the title of the exercise win
 		exercisesWin.setTitle(e.source.title);
@@ -206,7 +204,7 @@ groupview.addEventListener('click', function (e) {
 		editExercises(exercises, secondary, tertiary);
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
-			nav.open(exercisesWin,{animated:true});
+			nav.openWindow(exercisesWin,{animated:true});
 		}
 		else
 		{
