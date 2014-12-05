@@ -44,7 +44,6 @@ $.chartWebView.addEventListener('load', function() {
     $.chartWebView.evalJS('plotChart("'+title+'",'+cat+','+JSON.stringify(s1)+')');
 
 
-
 });
 
 $.graphmap.open();

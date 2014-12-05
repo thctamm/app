@@ -164,6 +164,23 @@ pastview.addEventListener('click', function (e) {
 		}
 		else
 		{
+			if (typeof detailWin == 'undefined')
+			{
+				var detailWin = Titanium.UI.createWindow({
+				    backgroundColor: '#F2F2F2',
+				    layout:'vertical',
+				    title: 'past exercise'
+				});
+				
+				// event listener for swipe functionality
+				detailview.addEventListener('swipe', function(e){
+					if (e.direction == 'right')
+					{
+						detailWin.close();
+					}
+				});
+				
+			}
 			// change the title of the window
 			detailWin.setTitle(e.source.title);
 			
