@@ -14,25 +14,25 @@ var View = Titanium.UI.createView({
 var total_weight = 0;
 var total_workouts = 0;
 
-var data = args.db.execute('SELECT * FROM stats');
+// var data = args.db.execute('SELECT * FROM stats');
+// 
+// if (data.isValidRow())
+// {
+	// total_weight = data.fieldByName('weight');
+	// total_workouts = data.fieldByName('workouts');
+// }
+// 
+// data.close();
+// 
+// var label1 = Titanium.UI.createLabel({
+    // text:'Total weight lifted: ' + total_weight,
+    // color: 'black',
+    // left: 10,
+    // top: 10,
+    // height: 30
+// });
 
-if (data.isValidRow())
-{
-	total_weight = data.fieldByName('weight');
-	total_workouts = data.fieldByName('workouts');
-}
-
-data.close();
-
-var label1 = Titanium.UI.createLabel({
-    text:'Total weight lifted: ' + total_weight,
-    color: 'black',
-    left: 10,
-    top: 10,
-    height: 30
-});
-
-View.add(label1);
+// View.add(label1);
 win.add(View);
 
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
