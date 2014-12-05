@@ -157,7 +157,7 @@ function editData(data)
 				dataview.add(setsBut);
 		
 				setsBut.addEventListener('click', function(e) {
-				var setsView = Alloy.createController('graphmap', {db:db.args, type: 'sets', name: data.fieldByName('name')}).getView();
+				var setsView = Alloy.createController('graphmap', {db:args.db, type: 'sets', name: data.fieldByName('name')}).getView();
 				});
 				k++;
 		}
@@ -173,7 +173,7 @@ function editData(data)
 				dataview.add(repsBut);
 		
 				repsBut.addEventListener('click', function(e) {
-				var repsView = Alloy.createController('graphmap', {db:db.args, type: 'reps', name: data.fieldByName('name')}).getView();
+				var repsView = Alloy.createController('graphmap', {db:args.db, type: 'reps', name: data.fieldByName('name')}).getView();
 				});
 				k++;
 		}
@@ -189,7 +189,7 @@ function editData(data)
 				dataview.add(timeBut);
 		
 				timeBut.addEventListener('click', function(e) {
-				var setsView = Alloy.createController('graphmap', {db:db.args, type: 'time', name: data.fieldByName('name')}).getView();
+				var setsView = Alloy.createController('graphmap', {db:args.db, type: 'time', name: data.fieldByName('name')}).getView();
 				});
 				k++;
 		}
@@ -205,14 +205,16 @@ function editData(data)
 				dataview.add(weightBut);
 		
 				weightBut.addEventListener('click', function(e) {
-				var weightView = Alloy.createController('graphmap', {db:db.args, type: 'weight', name: data.fieldByName('name')}).getView();
+				var weightView = Alloy.createController('graphmap', {db:args.db, type: 'weight', name: data.fieldByName('name')}).getView();
 				});
+				//Ti.API.info("Point: " +data.fieldByName('name'));
+				alert(data.fieldByName('name'));
 				k++;
 	
 		}
 	}
 	// close the query info
-	data.close();
+	//data.close();
 }
 
 // create a window and view for muscle groups
@@ -264,7 +266,7 @@ var dataview = Titanium.UI.createScrollView({
     width:'100%'
 });
 
-// add the exercises view to the window
+// add the data view to the window
 dataWin.add(dataview);
 
 
@@ -345,6 +347,7 @@ exercisesview.addEventListener('click', function (e) {
 		// get the relevant exercises from the database
 		var data = args.db.execute("SELECT * FROM list where name = ? ORDER BY name COLLATE NOCASE ASC", e.source.title);
 		
+		// PUT IN CHECK FOR DATA EMPTY
 		// edit the exercisesview and open the window
 		editData(data);
 		dataWin.open();
@@ -423,3 +426,4 @@ endview.add(topBut);
 mainWin.add(groupview);
 mainWin.add(endview);
 mainWin.open();
+

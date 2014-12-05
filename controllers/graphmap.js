@@ -1,44 +1,39 @@
 // get the arguments that were passed in.
 var args = arguments[0] || {};
-
-var graphWin = Titanium.UI.createWindow({
-    backgroundColor: '#F2F2F2',
-    layout:'vertical',
-    title: 'Excercise Data'
-});
-
-var graphView = Titanium.UI.createView({
-	left: 0,
-});
-
-// event listener for swipe functionality
-addView.addEventListener('swipe', function(e){
-	if (e.direction == 'right')
-	{
-		graphWin.close();
-	}
-});
-
+var type = args.type;
+var title = args.name;
 
 $.chartWebView.addEventListener('load', function() {
-	Ti.API.info('chartWebView ready');
+	Ti.API.info('chartWebView working');
 
-	var title =args.name;
- 	var data = "[{
-            name: 'Data1',
-            data: [150, 142, 138]
-          },{
-	            name: 'Data2',
-	            data: [70,78,85]
-	        }, {
-	            name: 'Data3',
-	            data: [121, 116, 101]
-	        }]";
-    var cat = "['6/25/2014', '6/26/2014', '6/27/2014']";
-
+ 	var numbers = [];
+ 	var points = [];
+ 	var info = args.db.execute('select * from workout_info where exercise = ?', title);
+ 	
+ 	Ti.API.info('DB Output:' +info.isValidRow());
+ 	
+ 	//stops running here
+ 	if(info.isValidRow())
+ 	{
+ 		points.push(info.fieldByName(type));
+ 		Ti.API.info("Point: " +info.fieldByName(type));
+ 	}
+ 	var data = [{
+ 		name: type,
+ 		numbers: points
+ 	}];
+ 	
+ 	//data.push(line);
+    var cat = "['Day 1']";
+    //var cat = "['Day 1', 'Day 2', 'Day 3']";
+	Ti.API.info('Info:' +data);
+	Ti.API.info('Info:' +data.numbers);
+	Ti.API.info('Info:' +data.name);
+	Ti.API.info('Info:' +cat);
+	Ti.API.info('Info:' +title);
     $.chartWebView.evalJS('plotChart("'+title+'",'+cat+','+data+')');
 
 });
 
-$.graph.open();
+$.graphmap.open();
 

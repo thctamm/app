@@ -1,5 +1,0 @@
-<Alloy>
-	<Window class="container">
-		<WebView id='chartWebView' url='/html/graph.html'></WebView>
-	</Window>
-</Alloy>
