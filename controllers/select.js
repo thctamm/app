@@ -305,14 +305,14 @@ endview.add(topBut);
 // add the views to the main window and open it
 mainWin.add(groupview);
 mainWin.add(endview);
-if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
-{
-	var win1 = Titanium.UI.iOS.createNavigationWindow({
-   		window: mainWin
-	});
-	win1.open();
-}
-else
-{
+// if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+// {
+	// var win1 = Titanium.UI.iOS.createNavigationWindow({
+   		// window: mainWin
+	// });
+	// win1.open();
+// }
+// else
+// {
 	mainWin.open();
-}
+// }
