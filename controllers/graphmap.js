@@ -4,6 +4,20 @@ var args = arguments[0] || {};
 var typestr = args.type;
 
 var title = args.name;
+// event listener for swipe functionality
+$.chartWebView.addEventListener('swipe', function(e){
+	if (e.direction == 'right')
+	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.close();
+		}
+		else
+		{
+		$.graphmap.close();
+		}
+	}
+});
 
 $.chartWebView.addEventListener('load', function() {
 	Ti.API.info('chartWebView working');
