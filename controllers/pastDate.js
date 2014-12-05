@@ -38,12 +38,12 @@ if (query.isValidRow())
 	
 		// generate tabel headers
 		var header = Ti.UI.createTableViewRow({
-		    height:'auto',
+		    height:'8%',
 		});
 		
 		var label0 = Titanium.UI.createLabel({
 		    text:query.fieldByName('timestamp'),
-		    color: 'black',
+		    color: 'gray',
 		    textAlign: 'center',
 		    right: '2%',
 		    left: '2%',
