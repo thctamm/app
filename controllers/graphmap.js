@@ -21,26 +21,30 @@ $.chartWebView.addEventListener('load', function() {
  	
  	
  	
- 	var data = {
+ 	var data = [{
  		name: typestr,
  		numbers: [points, 10, 10]
- 	};
- 	//data.push(numbers);
+ 	}];
+ 	
+ 	//numbers.push(data);
     //var cat = "['Day 1']";
+    //var data = data1.stringifyObject();
     var cat = "['Day 1', 'Day 2', 'Day 3']";
 	//Ti.API.info('Info:' +data);
 	alert(data);
 	alert(data.numbers);
-	alert(data.name);
+	//alert(data.name);
+	var s1 = data;
 	alert(title);
-	
+	Ti.API.info('Info:' +data);
 	Ti.API.info('Info:' +data.numbers);
 	Ti.API.info('Info:' +data.name);
 	Ti.API.info('Info:' +cat);
 	Ti.API.info('Info:' +title);
-    $.chartWebView.evalJS('plotChart("'+title+'",'+cat+','+data+')');
+    $.chartWebView.evalJS('plotChart("'+title+'",'+cat+','+JSON.stringify(s1)+')');
+
+
 
 });
 
 $.graphmap.open();
-
