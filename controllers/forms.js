@@ -13,7 +13,24 @@ if (typeof formsWin == 'undefined' )
 }
 else
 {
-	formsWin.open();
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		var nav = Titanium.UI.iOS.createNavigationWindow({
+	   		window: formsWin,
+	   		title: args.title
+		});
+		var back = Titanium.UI.createButton({title:'Back'});
+	    nav.leftNavButton = back;
+	    b.addEventListener('click', function()
+	    {
+	       formsWin.close();
+	    });
+		nav.open();
+	}
+	else
+	{
+		formsWin.open();
+	}
 }
 
 var formsview = Titanium.UI.createView({

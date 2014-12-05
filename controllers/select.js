@@ -202,7 +202,14 @@ groupview.addEventListener('click', function (e) {
 		
 		// edit the exercisesview and open the window
 		editExercises(exercises, secondary, tertiary);
-		exercisesWin.open();
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			win.open(exercisesWin,{animated:true});
+		}
+		else
+		{
+			exercisesWin.open();
+		}
 	}
 });
 
@@ -231,7 +238,14 @@ endBut.addEventListener('click', function(e) {
 	Ti.App.fireEvent('workout_ended');
 	
 	// close the window
-	mainWin.close();
+	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+	{
+		win1.close();
+	}
+	else
+	{
+		mainWin.close();
+	}
 });
 
 // button for favorite exercises
@@ -305,14 +319,15 @@ endview.add(topBut);
 // add the views to the main window and open it
 mainWin.add(groupview);
 mainWin.add(endview);
-// if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
-// {
-	// var win1 = Titanium.UI.iOS.createNavigationWindow({
-   		// window: mainWin
-	// });
-	// win1.open();
-// }
-// else
-// {
+if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+{
+	var win1 = Titanium.UI.iOS.createNavigationWindow({
+   		window: mainWin,
+   		title: "Muscle groups"
+	});
+	win1.open();
+}
+else
+{
 	mainWin.open();
-// }
+}
