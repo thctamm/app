@@ -344,6 +344,7 @@ groupview.addEventListener('click', function (e) {
 		
 		// edit the exercisesview and open the window
 		editExercises(exercises, secondary, tertiary);
+		{
 			exercisesWin.open();
 		}
 	}
