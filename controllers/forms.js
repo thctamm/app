@@ -404,7 +404,7 @@ submit.addEventListener('click', function (e) {
 		// return to the muscle groups view
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
-			args.nav.closeWindow(exercisesWin,{animated:true});
+			args.nav.closeWindow(args.Win ,{animated:true});
 		}
 		else
 		{
