@@ -162,7 +162,7 @@ exercisesview.addEventListener('click', function(e) {
 	if (e.source.title != null)
 	{
 		// open a forms window that is controleld by forms.js and give it necessary variables
-		Alloy.createController('forms', {title: e.source.title, db: args.db, workout_id: args.workout_id, Win: exercisesWin}).getView;
+		Alloy.createController('forms', {title: e.source.title, db: args.db, workout_id: args.workout_id, Win: exercisesWin, nav:nav}).getView;
 	}
 });
 
@@ -340,7 +340,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
    		title: "Muscle groups"
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
-	var leftview = Titanium.UI.createView;
+	var leftview = Titanium.UI.createView();
 	leftview.add(back);
     nav.leftNavButton = leftview;
     back.addEventListener('click', function()
