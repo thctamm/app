@@ -100,7 +100,7 @@ function list_workouts ()
 		},
 	    textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	    color: 'black',
-	    backgroundColor: '#C4C4C4',
+	    backgroundColor: 'none',
 	    left: '2%',
 	    right: '2%',
 	    top: offset + 50,
@@ -165,7 +165,7 @@ pastview.addEventListener('click', function (e) {
 		else
 		{
 			// change the title of the window
-			detailWin.setTitle(e.source.title);
+			detailWin.setTitle(datestring);
 			
 			// clear table if previously used
 			if (typeof table != 'undefined' )
