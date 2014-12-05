@@ -81,7 +81,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
    		title: "Statistics"
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
-	    nav.leftNavButton = back;
+	    statsWin.leftNavButton = back;
 	    back.addEventListener('click', function()
 	    {
 	       nav.close();
