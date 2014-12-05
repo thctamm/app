@@ -230,7 +230,7 @@ if (query.isValidRow())
 	   		title: "Muscle groups"
 		});
 		var back = Titanium.UI.createButton({title:'Back'});
-	    pastWin.leftNavButton = back;
+	    displayWin.leftNavButton = back;
 	    back.addEventListener('click', function()
 	    {
 	       nav.close();

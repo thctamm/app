@@ -14,32 +14,30 @@ var View = Titanium.UI.createView({
 var total_weight = 0;
 var total_workouts = 0;
 
-// var data = args.db.execute('SELECT * FROM stats');
-// 
-// if (data.isValidRow())
-// {
-	// total_weight = data.fieldByName('weight');
-	// total_workouts = data.fieldByName('workouts');
-// }
-// 
-// data.close();
-// 
-// var label1 = Titanium.UI.createLabel({
-    // text:'Total weight lifted: ' + total_weight,
-    // color: 'black',
-    // left: 10,
-    // top: 10,
-    // height: 30
-// });
+var data = args.db.execute('SELECT * FROM stats');
 
-// View.add(label1);
+if (data.isValidRow())
+{
+	total_weight = data.fieldByName('weight');
+	total_workouts = data.fieldByName('workouts');
+}
+
+var label1 = Titanium.UI.createLabel({
+    text:'Total weight lifted: ' + total_weight,
+    color: 'black',
+    left: 10,
+    top: 10,
+    height: 30
+});
+
+View.add(label1);
 Win.add(View);
 
 if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 {
 	var nav = Titanium.UI.iOS.createNavigationWindow({
    		window: Win,
-   		title: "Muscle groups"
+   		title: "Statistics"
 	});
 	var back = Titanium.UI.createButton({title:'Back'});
 	    Win.leftNavButton = back;

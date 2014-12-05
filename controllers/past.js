@@ -58,7 +58,7 @@ detailview.addEventListener('swipe', function(e){
 	{
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
-			nav.close();
+			nav.closeWindow(detailWin);
 		}
 		else
 		{
