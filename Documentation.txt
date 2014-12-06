@@ -7,7 +7,7 @@ Title - Gym App **Temporary
 Type - Mobile Application
 Enabled Devices - All iOS and Android Devices
 
-Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or the Titanium SDK.
+Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or an emulator.
 
 What is our App?
 Our app is a mobile gym application that allows the user to keep track of your workouts and progress at the gym.
