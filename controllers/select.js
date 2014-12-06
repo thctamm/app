@@ -137,7 +137,7 @@ groupview.addEventListener('swipe', function(e){
 		}
 		else
 		{
-		mainWin.close();
+			mainWin.close();
 		}
 	}
 });
@@ -154,6 +154,20 @@ var exercisesview = Titanium.UI.createScrollView({
     width:'100%'
 });
 
+exercisesview.addEventListener('swipe', function(e){
+	if (e.direction == 'right')
+	{
+		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
+		{
+			nav.closeWindow(exercisesWin,{animated:true});
+		}
+		else
+		{
+			exercisesWin.close();
+		}
+	}
+});
+
 // add the exercises view to the window
 exercisesWin.add(exercisesview);
 
@@ -166,20 +180,6 @@ exercisesview.addEventListener('click', function(e) {
 	}
 });
 
-// event listener for swipe functionality
-exercisesview.addEventListener('swipe', function(e){
-	if (e.direction == 'right')
-	{
-		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
-		{
-			nav.close();
-		}
-		else
-		{
-		exercisesWin.close();
-		}
-	}
-});
 
 // get the muscle groups
 var groups = args.db.execute('SELECT * FROM groups ORDER BY name COLLATE NOCASE ASC');
