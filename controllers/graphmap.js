@@ -26,7 +26,7 @@ $.chartWebView.addEventListener('load', function() {
  	var points = [];
  	var days = [];
  	
- 	var info = args.db.execute('select * from workout_info where exercise = ? ORDER by id DESC LIMIT 14', title);
+ 	var info = args.db.execute('select * from workout_info where exercise = ? ORDER by id ASC LIMIT 14', title);
  
  	
  	Ti.API.info('DB Output:' +info.isValidRow());

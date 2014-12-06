@@ -69,23 +69,26 @@ detailview.addEventListener('swipe', function(e){
 
 var picker = Ti.UI.createPicker({
     type : Ti.UI.PICKER_TYPE_DATE,
-    //useSpinner for Android Only
-    useSpinner : false, 
     minDate : new Date(1977, 4, 29),
-    maxDate : new Date(2018, 11, 31),
+    maxDate : new Date(),
     value : new Date(), 
     font: {
     fontWeight: 'bold',
     fontSize:50,
     },
-    width: '96%',
-    height: 135,
+    width: 'auto',
+    height: '135',
     top : 10, 
 });
+
+// if (Ti.Platform.osname == "android")
+// {
+	// picker.setBackgroundColor('#C4C4C4');
+// }
    
 var setBut = $.UI.create('Button', {
 	   top: offset,
-	   title: 'GO',
+	   title: 'Select date',
 	   id: "button",
 	});
  
@@ -160,7 +163,7 @@ pastview.addEventListener('click', function (e) {
 	// to make sure a blank area was not clicked
 	if (e.source.title != null)
 	{
-		if (e.source.title == 'GO')
+		if (e.source.title == 'Select date')
 		{
 			var month = picker.value.getMonth() + 1;
 			if (month < 10)

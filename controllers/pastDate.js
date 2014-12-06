@@ -37,7 +37,6 @@ displayview.addEventListener('swipe', function(e){
 var query = args.db.execute("SELECT * FROM workouts WHERE date(timestamp) = ?", date);
 if (query.isValidRow())
 {
-	var first = 0;
 	var data = [];
 	while (query.isValidRow())
 	{
@@ -45,27 +44,28 @@ if (query.isValidRow())
 	
 		// generate tabel headers
 		var header = Ti.UI.createTableViewRow({
-		    height:'8%',
 		});
+		if (Ti.Platform.osname == "android")
+		{
+			header.setHeight('auto');
+		}
+		else
+		{
+			header.setHeight('8%');
+		}
 		
 		var label0 = Titanium.UI.createLabel({
-		    text:query.fieldByName('timestamp'),
+		    text: query.fieldByName('timestamp'),
 		    color: 'gray',
 		    textAlign: 'center',
 		    right: '2%',
 		    left: '2%',
 		    font: {
-		    	//fontWeight: 'bold',
 				fontSize: 20
 			}
 		});
 		header.add(label0);
 		data.push(header);
-		if (first == 0)
-		{
-			label0.setTop(10);
-			first++;
-		}
 		
 		var row = Ti.UI.createTableViewRow({
 		    height:'auto',
