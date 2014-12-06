@@ -14,7 +14,7 @@ $.chartWebView.addEventListener('swipe', function(e){
 		}
 		else
 		{
-		$.graphmap.close();
+			$.graphmap.close();
 		}
 	}
 });
