@@ -28,8 +28,11 @@ function editExercises(exercises, second, third)
 		exercises.next();
 		k++;
 	}
+	
+	//if muscle group has secondary exercises 
 	if (typeof second != "undefined")
 	{
+		// display label and list exercises
 		if (second.isValidRow())
 		{
 			var sec_label = Titanium.UI.createLabel({
@@ -49,8 +52,10 @@ function editExercises(exercises, second, third)
 			exercisesview.add(sec_label);
 		}
 	}
+	// if muscle group has tertiary exercises 
 	else if (typeof third != "undefined")
 	{
+		// display label and list exercises
 		if (third.isValidRow())
 		{
 			var sec_label = Titanium.UI.createLabel({
@@ -70,6 +75,8 @@ function editExercises(exercises, second, third)
 			exercisesview.add(sec_label);
 		}
 	}
+	
+	// add buttons for second and third muscle group exercises
 	if (typeof second != "undefined")
 	{
 		while (second.isValidRow())
@@ -154,6 +161,7 @@ var exercisesview = Titanium.UI.createScrollView({
     width:'100%'
 });
 
+// event listener for swipe functionality
 exercisesview.addEventListener('swipe', function(e){
 	if (e.direction == 'right')
 	{
@@ -246,6 +254,7 @@ var endBut = $.UI.create('Button', {
     id: 'botbutton'
 });
 
+// when user clicks end workout
 endBut.addEventListener('click', function(e) {
 	
 	// fire a global event that index.js is listening for
@@ -275,6 +284,7 @@ var favoritesBut = $.UI.create('Button', {
     id: 'botbutton'
 });
 
+// when user clicks favorites
 favoritesBut.addEventListener('click', function(e) {
 	
 	// change the title of the exercise win
@@ -308,6 +318,7 @@ var topBut = $.UI.create('Button', {
     id: 'botbutton'
 });
 
+// when user clicks most used
 topBut.addEventListener('click', function(e) {
 	
 	// change the title of the exercise win

@@ -31,8 +31,11 @@ function editExercises(exercises, second, third)
 		exercises.next();
 		k++;
 	}
+	
+	// if muscle group has secondary exercises 
 	if (typeof second != "undefined")
 	{
+		// display label and list exercises
 		if (second.isValidRow())
 		{
 			var sec_label = Titanium.UI.createLabel({
@@ -52,8 +55,10 @@ function editExercises(exercises, second, third)
 			exercisesview.add(sec_label);
 		}
 	}
+	// if muscle group has tertiary exercises 
 	else if (typeof third != "undefined")
 	{
+		// display label and list exercises
 		if (third.isValidRow())
 		{
 			var sec_label = Titanium.UI.createLabel({
@@ -73,6 +78,8 @@ function editExercises(exercises, second, third)
 			exercisesview.add(sec_label);
 		}
 	}
+	
+	// add buttons for second and third muscle group exercises
 	if (typeof second != "undefined")
 	{
 		while (second.isValidRow())
@@ -121,6 +128,7 @@ function editData(data)
 {
 	var k = 0;
 	
+	// check which categories the exercise has and delete unecessary buttons
 	if (setsBut != null)
 	{
 		dataview.remove(setsBut);
@@ -157,6 +165,7 @@ function editData(data)
 				dataview.add(setsBut);
 		
 				setsBut.addEventListener('click', function(e) {
+				// passes in which type of graph selected and for which exercise
 				var setsView = Alloy.createController('graphmap', {db:args.db, type: 'sets', name: data.fieldByName('name')}).getView();
 				});
 				k++;
