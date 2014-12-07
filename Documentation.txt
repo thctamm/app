@@ -9,6 +9,11 @@ Enabled Devices - All iOS and Android Devices
 
 Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or an emulator.
 
+Android: 
+1) copy the application package (.apk file) to your device.
+2) enable installing applications from unknown sources form the phone settings
+3) install the application package
+
 What is our App?
 Our app is a mobile gym application that allows the user to keep track of your workouts and progress at the gym.
 
@@ -22,7 +27,7 @@ Overall App Features:
 	Swipe Feature: At any time throughout the app the user can Swipe Right in order to return to the previous window!
 	
 	Navigation Bar for iOS: Only for iOS we have a Navigation Bar on the top of all the Windows that allows you to press back in order to access
-	the previous window. (Android automaticall has the back feature)
+	the previous window. (Android automatically has the back feature)
 	
 	Remember Workout: The user can close the App and it will automatically remember if you are on a Current Workout. 
 
@@ -65,9 +70,13 @@ This window also includes three buttons in the bottom of the window called Favor
 		Depending on what exercise you click, the data may include:
 		- Sets: Manually input the amount of sets the user did in the exercise.
 		- Reps: Manually input the amount of reps the user did in that execrise.
-		- Weight: Manaully input the amount of weight the user did in that exercise.
-		- Timer: Initializes a timer, and keeps track of the amount of time the user spent on that exercise. When the timer is stopped it automatically adds
-		  the time to the corresponding field for submittion. 
+		- Weight: Manually input the amount of weight the user did in that exercise.
+		- Time: Manually input the amount of time (in seconds) the user did the exercise.
+		If the time field is present the view will also contain a timer with two buttons: start/stop and Reset
+		start - Initializes a timer, and keeps track of the amount of time the user spent on that exercise. Pressing start changes the start button to Stop
+		Stop - Stops the timer and automatically adds the time to the corresponding field for submittion.
+		Reset - stops the timer if started and resets the timer value to 0:00
+		pressing start again also resets the timer and starts the timer. 
 		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
 		to the Muscle Group Window where you can continue your workout.
 		
@@ -82,13 +91,13 @@ Past Workouts: Clicking past workouts brings the user to a calender wheel to sel
 - Recent Workouts
 
 	Calendar Wheel: The calendar wheel allows you to scroll to different dates on the calendar, and choose a data from a past workout. If there is a workout
-	the app brings you to a Data Page about that workout. If there are no workouts on that date, Gym App** sends you an alert that there were no workouts. 
+	the app brings you to a Data Page about all of the workouts done on that date. If there are no workouts on that date, Gym App** sends you an alert that there were no workouts. 
 	
 	Recent Workout Dates: Clicking on a recent workout brings you to a Data Page about that workout.
 	- Data Page
 	
 		Data Page: The data page gives the user a list of all the exercises that were completed in that workout, and the amount of sets, reps, weight, and
-		time done or spent in that workout. The user is also given the ability to Delete that workout.
+		time done or spent in that workout. If the workout was chosen from the list of previous workouts then tte user is also given the ability to Delete that workout.
 		- Delete Button
 		
 			Delete Button: Clcking this button deletes the workout and all its information from the app. 
@@ -103,11 +112,7 @@ This window also includes two buttons in the bottom of the window called Favorit
 - Most Used
 
 	Muscle Group Buttons: Clicking on a Muscle Group brings the user to the a new window that contains all the exercises associated with that muscle. 
-	- Exercise Buttons
-	
-		Exercise Buttons: Clicking on an Excercise in the window brings the user to a window which allows the user to input their data for that exercise.
-		Depending on what exercise you click, the data may include:
-		
+	- Exercise Buttons		
 		
 	Favorites: Clicking on Favorites opens up a window that contains all the user's favorite exercises which were saved from previous workouts where 
 	the user indicated that an exercise they previously did was a Favorite Exercise. This window allows the user to directly access his or her favorite

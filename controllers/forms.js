@@ -13,6 +13,8 @@ if (typeof formsWin == 'undefined' )
 }
 else
 {
+	
+	// for iOS make a navbar, for android, only the window.
 	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	{
 		var nav = Titanium.UI.iOS.createNavigationWindow({
@@ -33,6 +35,7 @@ else
 	}
 }
 
+// create a view
 var formsview = Titanium.UI.createView({
     left:'0dp',
     width:'100%'
@@ -81,8 +84,10 @@ var options = ['time', 'sets', 'reps', 'weight'];
 // create the necessary forms
 for (z = 0; z < options.length; z++)
 {
+	// check if any of the 4 options are used for this exercise
 	if (chosen.fieldByName(options[z]) == 1)
 	{
+		// if they are, create a field for it.
 		var field = Ti.UI.createTextField({
 			keyboardType:Titanium.UI.KEYBOARD_NUMBER_PAD,
 			color: '#336699',
@@ -91,6 +96,8 @@ for (z = 0; z < options.length; z++)
 			top: 10 + 45 * p,
 			width: '100%',
 		});
+		
+		// add it to the view and  keep track of it in forms
 		forms.push(field);
 		formsview.add(field);
 		p++;
@@ -99,11 +106,14 @@ for (z = 0; z < options.length; z++)
 		if (options[z] == 'time')
 		{
 			time_exists = true;
+			
+			// keep track of the time field so the value from the stopper could be inserted into it
 			timefield = field;
 		}
 	}
 }
 
+// create the stopper
 if (time_exists)
 {
 	// label for time
@@ -130,10 +140,14 @@ if (time_exists)
 	   id: "button",
 	   backgroundColor: 'green'
 	});
+	
+	// event listener for the start and stop button
 	startstop.addEventListener('click', function (e) {
+		
+		// if the button is in the start state
 		if (startstop.getTitle() == 'Start')
 		{
-			// change button appearance
+			// change button appearance to Stop
 			startstop.setTitle("Stop");
 			startstop.setBackgroundColor('red');
 			
@@ -152,9 +166,11 @@ if (time_exists)
 			}
 			
 		}
+		
+		// else if the button is in its stop state
 		else
 		{
-			// change button appearance
+			// change button appearance to start
 			startstop.setTitle("Start");
 			startstop.setBackgroundColor('green');
 			
@@ -165,7 +181,7 @@ if (time_exists)
 			// set the time field value
 			timefield.setValue(time / 100);
 			
-			// let the screen sleep
+			// let the screen sleep again
 			if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 			{
 				Titanium.App.idleTimerDisabled = false;
@@ -178,6 +194,8 @@ if (time_exists)
 			
 		}
 	});
+	
+	// the reset button for the stopper
 	var reset = $.UI.create('Button', {
 	   top: 10 + p * 45,
 	   right: "2%",
@@ -186,12 +204,17 @@ if (time_exists)
 	   id: "button",
 	});
 	p++;
+	
+	// event listener for the reset button
 	reset.addEventListener('click', function (e) {
 		
 		// stop the timer if it is on and reset the startstop button
 		if (startstop.getTitle() == 'Stop')
 		{
+			// stop the interval
 			clearInterval(timer);
+			
+			// clear the interval
 			timer = null;
 			
 			// change button appearance
@@ -211,6 +234,8 @@ if (time_exists)
 		// reset the timer box
 		timebox.setText('00:00:00');
 	});
+	
+	// add the stopper with its buttons to the view
 	formsview.add(timebox);
 	formsview.add(startstop);
 	formsview.add(reset);
@@ -219,7 +244,11 @@ if (time_exists)
 // function for updating the time
 function stopper()
 {
+	
+	// increment the time
 	time += 1;
+	
+	// convert time to milliseconds, seconds and minutes using some clever maths
 	var milliseconds = time % 100;
 	if (milliseconds < 10)
 	{
@@ -235,6 +264,8 @@ function stopper()
 	{
 		minutes = '0' + minutes;
 	}
+	
+	// update the timers label to the current time
 	timebox.setText(minutes + ':' + seconds + ':' + milliseconds);
 }
 
@@ -346,7 +377,7 @@ submit.addEventListener('click', function (e) {
 			args.db.execute('UPDATE stats SET workouts = workouts + 1');
 		}
 		
-		// update usage
+		// update usage of the exercise
 		args.db.execute('UPDATE list SET used = used + 1 WHERE name = ?', args.title);
 		
 		// dynamically create the query for adding an exercise
@@ -395,7 +426,7 @@ submit.addEventListener('click', function (e) {
 			}
 		}
 		
-		// update stats
+		// if weight was lifted update total ammount of weight lifted
 		if (check1 == true && check2 == true)
 		{
 			args.db.execute('UPDATE stats SET weight = weight + ?', lifted);
@@ -404,6 +435,7 @@ submit.addEventListener('click', function (e) {
 		// return to the muscle groups view
 		if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 		{
+			// the app event is to make the previous window go back to the muscle groups window
 			Ti.App.fireEvent('submitted');
 			nav.close();
 		}
