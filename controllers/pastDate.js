@@ -200,28 +200,8 @@ if (query.isValidRow())
 		separatorColor: "black"
 	});
 	
-	// delete button for deleting a workout
-	var del = $.UI.create('Button', {
-	   title: 'Delete',
-	   id: "botbutton",
-	   bottom: 10,
-	   width: '96%'
-	});
-	del.addEventListener('click', function (e) {
-		
-		// clear the workout from list of workouts
-		args.db.execute("DELETE FROM workouts where id = ?", workout_id);
-		
-		// remove all exercises from that workout
-		args.db.execute("DELETE FROM workout_info where workout_id = ?", workout_id);
-		
-		//return to list of workouts
-		displayWin.close();
-	});
-	
 	// add table and button to view and open window.
 	displayview.add(table);
-	displayview.add(del);
 	displayWin.add(displayview);
 	if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 	{
