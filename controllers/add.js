@@ -4,6 +4,7 @@
  * 
  */
 
+// get the database arguments that were passed in
 var args = arguments[0] || {};
 
 // create a window and view for adding   
