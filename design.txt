@@ -18,18 +18,57 @@ App Design Implementation
 language to us, and had a strong API. In order to differentiate between differences between Android and iOS we created IF statements at certain sections to 
 differentiate between iOS and Android users.
 
+Database:
+
+We use a SQLite database, because it is offline, compact and titanium has built in support for it.
+Our database has the following structure 
+Tables(description) 
+	- columns - description) :
+
+- current (table for storing the current active workout id)
+	- current_workout (the current active workout id)
+- groups (table for storing the muscle groups)
+	- id (auto incremented. Unutilized right now)
+	- name (name of the muscle group)
+- list (table for storing all the exercises)
+	- id (id of the exercise. currently unutilized)
+	- name (name of the exercise)
+	- muscle_group (the primary muscle group of the exercise)
+	- time (value for checking whether the exercise uses time)
+	- weight (value for checking whether the exercise uses weight)
+	- sets (value for checking whether the exercise uses sets)
+	- reps (value for checking whether the exercise uses reps)
+	- second (the secondary muscle group of the exercise)
+	- third (the teritary muscle group of the exercise)
+- stats (table for storing statistics)
+	- weight (total ammount of weight lifted)
+	- workouts (total number of workouts done)
+- workout_info (table for storing performed exercises)
+	- id (id of the performed exercise)
+	- exercise (name of the exercise that was performed)
+	- weight (how much weight was used)
+	- time (how much time was spent)
+	- sets (how many sets were done)
+	- reps (how many reps were done)
+	- workout_id (the workout_id to which the exercise belongs to. Used to pair exercises to workouts)
+- workouts (table for storing all the workouts done)
+	- id (id of the workout. Used to pair exercises to workouts)
+	- timestamp (timestamp of when the exercise was started)
+
+
+
 Overall App Features:
 - Swipe Feature
 - Navigation Bar for iOS
 - Remember Workout
 
-	Swipe Feature: Used an if statement that said, if the user swipes right their current window closes and they are brought back to their previous window. 
+	Swipe Feature: Uses an event listener for swipes. Uses an if statement that said, if the user swipes right their current window closes and they are brought back to their previous window. 
 	
 	Navigation Bar for iOS: Since iOS users don't have a back button like android, we used an if statement that identifies iOS users, and adds a 
 	back button to the top of the window, and a title of what window they are in. 
 	
-	Remember Workout: We store the current workout id in our SQLite Databae, and the when the app is opened we check whether a current workout was started
-	less than 2 and hrs ago, and if not we create a new workout id in our database. 
+	Remember Workout: We store the current workout id in our SQLite Database, and then when the app is opened we check whether a current workout was started
+	less than 2 and hrs ago, and if not we create a new workout id in our database. This allows a workout to be continued even if the app is closed at any point during 2 and a half hours since the start
 
 Main Menu Options: Created main window with our Titanium API, and we added buttons using Titanium API to these options, which when clicked opens the 
 feature. We thought this was the best idea to make our APP easy to use, and show our features right away. 
@@ -47,7 +86,7 @@ feature. We thought this was the best idea to make our APP easy to use, and show
 
 Lets Explore the Main Menu Options
 
-New Workout: New workout is created using Titanium API to create a new window, it also creates workout in our database, but it is not added to our database
+New Workout: New workout is created using Titanium API to create a new window, it also stores a new workout id in a local variable., but it is not added to our database
 until the user does at least one exercise, this prevents blank workouts.
 - Muscle Group Buttons
 - Favorites
@@ -57,8 +96,8 @@ until the user does at least one exercise, this prevents blank workouts.
 	Muscle Group Buttons: The muscle groups are grabbed from our SQLite database, we figured that putting the muscles in a database would make it easier
 	to add more muscles later on, and we could grab the muscles from the database much easier in other features of our app instead of just hardcoding them.
 	
-	Favorites: In the database where exercises are stored there is a column called favorite, and if the user checks the database this column becomes one, 
-	and it gets all the exercises where favorites are equal to one and displays them. 
+	Favorites: In the database where exercises are stored there is a column called favorite, and if the user favorites an exercise the database this column becomes one. 
+	in the favorites window all the exercises, which have 1 for the value of favorite are displayed. 
 	- Exercise Buttons
 	
 	Most Used: In the database where the list of exercises is stored it keeps track of how many times the exercise has been used. Our SQL statement grabs the
@@ -80,10 +119,10 @@ until the user does at least one exercise, this prevents blank workouts.
 		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
 		to the Muscle Group Window where you can continue your workout.
 		
-		- Favorite Exercise: If the button is click the column in the database for Favorite turns to One, and all the the exercises where favorite is equal
-		to one is put in the favorites menu.
+		- Favorite Exercise: If the check box is checked, the column in the database for Favorite turns to One, and all the the exercises where favorite is equal
+		to one is put in the favorites menu. If it is unchecked, then the favorite value will be chagnd to 0. A app event is also fired that makes the favorites view to update its list. 
 		
-	End Workout: The local variable of workout_id is cleared, and then the current workout is cleared, and you save the workout data in the database. 
+	End Workout: The local variable of workout_id is cleared, and then the current workout is cleared. 
 	
 Past Workouts: We create a window using Titanium API, and we include our calendar picker wheel and the most recent workout dates. 
 - Calendar Picker Wheel
@@ -96,7 +135,7 @@ Past Workouts: We create a window using Titanium API, and we include our calenda
 	
 	Recent Workout Dates: 
 	- A database query is made to select all the recently completed workouts and display them below the picker. That way the user could use the picker or the
-	list of workouts before, in case they don't remember which date they worked out on last, for example. 
+	list of workouts before, in case they don't remember which date they worked out on last, for example. The query is limited to 100 to avoid lag when hundreds or thousands of workouts have been added.
 	
 	
 		Data Page:
@@ -104,12 +143,13 @@ Past Workouts: We create a window using Titanium API, and we include our calenda
 		If directed from clicking a recent workout timestamp they will see that specific workout only.
 		Listed below each workout timestamp is a table with the name of the exercise and the reps, sets, weight and time they completed. 
 		
-		- Delete Button
+		- Delete Button (only on workouts chosen from recent workouts)
 			Delete Button: We use a delete SQL statement that deletes the workout from the database. 
 			
 			
 Statistics: Statistics makes a SQL statement that selects everything from Exercises, and checks the 'used' exercises and which ones are used the most (limit 1),
- the total amount of weight lifted by taking the weights from workout_info and adding them, and amount of workouts by counting the amount of workout_ids.
+ the total amount of weight lifted and total ammount of workouts are taken from the database from the stats table. These two values are updated every time an
+ exercise with weights is added or when a new workout is added.
 
 
 Graph: Initialized a new window using titanium API.

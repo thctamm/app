@@ -252,14 +252,4 @@ if (query.isValidRow())
 else 
 {
 	alert("No workout on this day");
-	// if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
-	// {
-// 		
-		// // on iOS close the navigation windo
-		// nav.close();
-	// }
-	// else
-	// {
-		// displayWin.close();
-	// }
 }
