@@ -81,10 +81,6 @@ var picker = Ti.UI.createPicker({
     top : 10, 
 });
 
-// if (Ti.Platform.osname == "android")
-// {
-	// picker.setBackgroundColor('#C4C4C4');
-// }
    
 var setBut = $.UI.create('Button', {
 	   top: offset,
@@ -127,13 +123,13 @@ function list_workouts ()
 	pastview.add(header);
 	
 	// get previous workouts
-	var query = args.db.execute("SELECT * FROM workouts ORDER BY id DESC");
+	var query = args.db.execute("SELECT * FROM workouts ORDER BY id DESC LIMIT 100");
 
 	// generate a list of previous workouts
 	var i = 0;
 	while (query.isValidRow())
 	{
-		var format_time = args.db.execute("SELECT strftime('%Y-%m-%d %H:%M', ?) as time LIMIT 100", query.fieldByName('timestamp'));
+		var format_time = args.db.execute("SELECT strftime('%Y-%m-%d %H:%M', ?) as time", query.fieldByName('timestamp'));
 		var new_but =$.UI.create('Button', {
 		    top: offset + 90 + i * 50,
 		    title: format_time.fieldByName('time'),
