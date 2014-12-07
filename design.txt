@@ -1,0 +1,136 @@
+Developers - Timothy Tamm, Sofia Shaprio, and Timothy Makalinao
+Class - Computer Science 50 
+Professor - Dr. David Malan
+Teaching Fellows - Wes Chen, Robbie Gibson, and Chris Lim
+
+Title - Gym App **Temporary
+Type - Mobile Application
+Enabled Devices - All iOS and Android Devices
+
+Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or an emulator.
+
+What is our App?
+Our app is a mobile gym application that allows the user to keep track of your workouts and progress at the gym.
+
+App Design Implementation
+(Same layout as Documentation but for Design details)
+- We used Titanium App Design in order to make our App dual platform, as in works for iOS and Android. Titanium uses Javascript which was a familiar 
+language to us, and had a strong API. In order to differentiate between differences between Android and iOS we created IF statements at certain sections to 
+differentiate between iOS and Android users.
+
+Overall App Features:
+- Swipe Feature
+- Navigation Bar for iOS
+- Remember Workout
+
+	Swipe Feature: Used an if statement that said, if the user swipes right their current window closes and they are brought back to their previous window. 
+	
+	Navigation Bar for iOS: Since iOS users don't have a back button like android, we used an if statement that identifies iOS users, and adds a 
+	back button to the top of the window, and a title of what window they are in. 
+	
+	Remember Workout: We store the current workout id in our SQLite Databae, and the when the app is opened we check whether a current workout was started
+	less than 2 and hrs ago, and if not we create a new workout id in our database. 
+
+Main Menu Options: Created main window with our Titanium API, and we added buttons using Titanium API to these options, which when clicked opens the 
+feature. We thought this was the best idea to make our APP easy to use, and show our features right away. 
+- New Workout
+- Past Workouts
+- Statistics
+- Graph
+- Add Exercise**
+- Continue Workout*
+- End Workout*
+
+*Buttons only available when New Workout has been previously initialized.
+** Add Exercise is located on the Top Right Corner of the main page.
+
+
+Lets Explore the Main Menu Options
+
+New Workout: New workout is created using Titanium API to create a new window, it also creates workout in our database, but it is not added to our database
+until the user does at least one exercise, this prevents blank workouts.
+- Muscle Group Buttons
+- Favorites
+- Most Used
+- End Workout
+	
+	Muscle Group Buttons: The muscle groups are grabbed from our SQLite database, we figured that putting the muscles in a database would make it easier
+	to add more muscles later on, and we could grab the muscles from the database much easier in other features of our app instead of just hardcoding them.
+	
+	Favorites: In the database where exercises are stored there is a column called favorite, and if the user checks the database this column becomes one, 
+	and it gets all the exercises where favorites are equal to one and displays them. 
+	- Exercise Buttons
+	
+	Most Used: In the database where the list of exercises is stored it keeps track of how many times the exercise has been used. Our SQL statement grabs the
+	top 15 most used exercises based on the column used. 
+	- Exercise Buttons
+	
+		Exercise Buttons: The exercise buttons are grabbed from our SQLite database, just like the muscles we put them in the database to make it easier 
+		for us to implement. Also, we could add workout_info in SQLlite database which keeps track how manys Sets, Reps, Weight, and the time spent on each excersice.
+		This feature allows us to grab this data later on for other features in our app. 
+		- Sets: When you type the amount of sets you did we put the number into our database with your workout_info.
+		- Reps: When you type the amount of reps you did we put the number into our database with your workout_info.
+		- Weight: When you type the amount of weight you did we put the number into our database with your workout_info.
+		- Time: Time grabs the data from timer, which makes it easier for the user to keep track of time, instead of manually inputting. Time is then stored
+		in workout_info when submitted to the database.
+		- Timer: When start is clicked, a function is started which is run every 10 milliseconds. Every time time function is callled a variable gets incremented 
+		and the label that displays the time is changed. The label uses modulo, divison and flooring to convert from centiseconds to centiseconds, seconds and minutes.
+		if stop is clicked, then the interval is cleared, stopping the function from looping. The reset button  also clears the interval, but also resets
+		the time variable and the label. When stop is pressed the current value of time is also converted to seconds and automatically added to the time field.
+		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
+		to the Muscle Group Window where you can continue your workout.
+		
+		- Favorite Exercise: If the button is click the column in the database for Favorite turns to One, and all the the exercises where favorite is equal
+		to one is put in the favorites menu.
+		
+	End Workout: The local variable of workout_id is cleared, and then the current workout is cleared, and you save the workout data in the database. 
+	
+Past Workouts: We create a window using Titanium API, and we include our calendar picker wheel and the most recent workout dates. 
+- Calendar Picker Wheel
+- Recent Workouts
+
+	Calendar Wheel: Using the built in picker object in Titanium we display a calendar for the user to select month, day, and year and then click 'Select Date'
+	to view a list of exercises completed on that day. We create a string based on all the picker values that is passed to the next page in oder to select the 
+	right workout from the database. This allows the viewer to quickly get to any date and remember what they did on that day. If a user clicks on a date with
+	the picker it shows them all the workouts done that day with the table of exercises and information about sets, reps, time, or weight if applicable.
+	
+	Recent Workout Dates: 
+	- A database query is made to select all the recently completed workouts and display them below the picker. That way the user could use the picker or the
+	list of workouts before, in case they don't remember which date they worked out on last, for example. 
+	
+	
+		Data Page:
+		- If directed from Calendar Wheel they will see all the workouts from that day separated by time (or just one if they only worked out once).
+		If directed from clicking a recent workout timestamp they will see that specific workout only.
+		Listed below each workout timestamp is a table with the name of the exercise and the reps, sets, weight and time they completed. 
+		
+		- Delete Button
+			Delete Button: We use a delete SQL statement that deletes the workout from the database. 
+			
+			
+Statistics: Statistics makes a SQL statement that selects everything from Exercises, and checks the 'used' exercises and which ones are used the most (limit 1),
+ the total amount of weight lifted by taking the weights from workout_info and adding them, and amount of workouts by counting the amount of workout_ids.
+
+
+Graph: Initialized a new window using titanium API.
+- Muscle Group Buttons
+- Favorites
+- Most Used
+
+	Muscle Group Buttons: The muscle groups are grabbed from our SQLite database, we figured that putting the muscles in a database would make it easier
+	to add more muscles later on, and we could grab the muscles from the database much easier in other features of our app instead of just hardcoding them.
+	
+		Exercise Buttons: The exercise buttons are grabbed from our SQLite database, just like the muscles we put them in the database to make it easier 
+		for us to implement. We then grab from the SQl database the list of exercises and the one that the user picks from. We then grab the columns of sets, reps,
+		weight, and time depending on whats labeled as ONE, in the database.
+		- Reps
+		- Weight
+		- Time
+		
+			Graphing Features: Our graph uses the Highcharts API, which we acquired. We made a chart in graphmap.html, and a windowview from graphmap.xml.
+			In graphmap.js we initialize the graph, and use an SQL statement to get the data numbers from the workout_info. We then push the points into data,
+			and send the data into the graph, where the highcahrts API makes the graph for us. We found that this would be the best way to make a quality graph because
+			it allowed us to click on certain points, and zoom in. 
+
+
+Thank you for reading our Design Implementatin. 
