@@ -1,4 +1,4 @@
-// get the database arguments that were passed in.
+// get the database arguments that were passed in
 var args = arguments[0] || {};
 
 // gets the type of graph (time, sets, reps, weight)

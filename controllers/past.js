@@ -1,3 +1,4 @@
+// get the database arguments that were passed in
 var args = arguments[0] || {};
 
 // platform specific height constant
@@ -18,6 +19,7 @@ var pastWin = Titanium.UI.createWindow({
     title: 'Past exercises'
 });
 
+// add scrolling functionality
 var pastview = Titanium.UI.createScrollView({
     scrollType:"vertical",
     left:'0dp',
@@ -46,6 +48,7 @@ var detailWin = Titanium.UI.createWindow({
     title: 'past exercise'
 });
 
+// add scrolling functionality
 var detailview = Titanium.UI.createView({
     scrollType:"vertical",
     left:'0dp',
@@ -67,6 +70,7 @@ detailview.addEventListener('swipe', function(e){
 	}
 });
 
+// create calendar scroll bar for user to select date
 var picker = Ti.UI.createPicker({
     type : Ti.UI.PICKER_TYPE_DATE,
     minDate : new Date(1977, 4, 29),
@@ -81,21 +85,21 @@ var picker = Ti.UI.createPicker({
     top : 10, 
 });
 
-   
+// button user clicks once date is selected
 var setBut = $.UI.create('Button', {
 	   top: offset,
 	   title: 'Select date',
 	   id: "button",
 	});
  
- 
+// adds picker and button to view
 pastview.add(picker);
 pastview.add(setBut);
 
 // for keeping track of workouts
 listed = [];
 
-// function for listing workouts
+// function for listing workouts below the picker
 function list_workouts ()
 {
 	// delete previous list
@@ -154,13 +158,14 @@ function list_workouts ()
 // list the workouts
 list_workouts();
 
-// Event listener for when a workout is chosen
+// Event listener for when a workout is chosen from picker
 pastview.addEventListener('click', function (e) {
 	// to make sure a blank area was not clicked
 	if (e.source.title != null)
 	{
 		if (e.source.title == 'Select date')
 		{
+			// get values selectred from picker
 			var month = picker.value.getMonth() + 1;
 			if (month < 10)
 			{
@@ -172,7 +177,9 @@ pastview.addEventListener('click', function (e) {
 			{
 				day = '0' + day;
 			}
+			// create datestring from picker values
 			var datestring = year + '-' + month + '-' + day;
+			// pass datestring to pastDate to display correct past workout
 		    var dateView = Alloy.createController('pastDate', {db:args.db, date:datestring}).getView();
 		}
 		else
@@ -203,6 +210,7 @@ pastview.addEventListener('click', function (e) {
 				detailview.remove(table);
 			}
 			
+			// data array for table 
 			data = [];
 			
 			// get workout_id
