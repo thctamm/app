@@ -2,7 +2,7 @@
 var indexWin = Titanium.UI.createWindow({
     backgroundColor:'#F2F2F2',
     layout:'vertical',
-    title: 'Gym App'
+    title: 'G.Y.M.'
 });
 
 var indexView = Titanium.UI.createScrollView({
@@ -226,7 +226,7 @@ if (Ti.Platform.osname == "iphone" || Ti.Platform.osname == "ipad")
 {
 	var nav = Titanium.UI.iOS.createNavigationWindow({
    		window: indexWin,
-   		title: "Gym app"
+   		title: "G.Y.M."
 	});
 	var add_exercise = Titanium.UI.createButton({title:'Add exercise'});
 	    indexWin.rightNavButton = add_exercise;
