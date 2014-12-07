@@ -3,12 +3,14 @@ Class - Computer Science 50
 Professor - Dr. David Malan
 Teaching Fellows - Wes Chen, Robbie Gibson, and Chris Lim
 
-Title - Gym App **Temporary
+Title - G.Y.M
 Type - Mobile Application
 Enabled Devices - All iOS and Android Devices
 
-Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or an emulator.
-
+Run Our App - To run our app you will need ONE of the following an iOS emulator, Android enabled device, or a titanium Emulator.
+We don't have apple developer rights so we could not make an SDK file for it. In order to run in iOS download, TitaniumStudio and import the project into 
+Titanium. You may need to create a New Project -> mobile device, and then import the file. From the importation of the files copy them into the new project, 
+and delete the stuff automatically created from the new project. Run the project in iOS to get the file running. 
 Android: 
 1) copy the application package (.apk file) to your device.
 2) enable installing applications from unknown sources form the phone settings
@@ -77,7 +79,7 @@ This window also includes three buttons in the bottom of the window called Favor
 		Stop - Stops the timer and automatically adds the time to the corresponding field for submittion.
 		Reset - stops the timer if started and resets the timer value to 0:00
 		pressing start again also resets the timer and starts the timer. 
-		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
+		G.Y.M requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
 		to the Muscle Group Window where you can continue your workout.
 		
 		- Favorite Exercise: The user is given a chance to check the exercise as a favorite exercise which will be saved for the user.
@@ -133,16 +135,16 @@ This window also includes two buttons in the bottom of the window called Favorit
 		
 			Graphing Features: Our graph is VERY Intuitive, the graph allows you to click on data points, take out the graphed line, and zoom in on the graph.
 			
-			Sets: When sets is clicked the Gym App*** graphs the amount of sets you have done on that exercise, and gives you a line chart with the dates
+			Sets: When sets is clicked the G.Y.M graphs the amount of sets you have done on that exercise, and gives you a line chart with the dates
 			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
 			
-			Reps: When sets is clicked the Gym App*** graphs the amount of reps you have done on that exercise, and gives you a line chart with the dates
+			Reps: When sets is clicked the G.Y.M graphs the amount of reps you have done on that exercise, and gives you a line chart with the dates
 			you did that exercise as the X-Axis and the amount of reps you did as the Y-Axis
 			
-			Weight: When sets is clicked the Gym App*** graphs the amount of weight you have done on that exercise, and gives you a line chart with the dates
+			Weight: When sets is clicked the G.Y.M graphs the amount of weight you have done on that exercise, and gives you a line chart with the dates
 			you did that exercise as the X-Axis and the amount of weight you did as the Y-Axis
 			
-			Time: When sets is clicked the Gym App*** graphs the amount of time you have spent on that exercise, and gives you a line chart with the dates
+			Time: When sets is clicked the G.Y.M graphs the amount of time you have spent on that exercise, and gives you a line chart with the dates
 			you did that exercise as the X-Axis and the amount of sets you did as the Y-Axis
 
 Add Exercise: When Add Exercise is clicked the user is brought to a window which allows you to add an exercise in a muscle group. The user chooses what 

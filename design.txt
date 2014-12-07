@@ -3,11 +3,14 @@ Class - Computer Science 50
 Professor - Dr. David Malan
 Teaching Fellows - Wes Chen, Robbie Gibson, and Chris Lim
 
-Title - Gym App **Temporary
+Title - G.Y.MT
 Type - Mobile Application
 Enabled Devices - All iOS and Android Devices
 
-Run Our App - To run our app you will need ONE of the following an iOS enabled device, Android enabled device, or an emulator.
+Run Our App - To run our app you will need ONE of the following an iOS emulator, Android enabled device, or a titanium Emulator.
+We don't have apple developer rights so we could not make an SDK file for it. In order to run in iOS download, TitaniumStudio and import the project into 
+Titanium. You may need to create a New Project -> mobile device, and then import the file. From the importation of the files copy them into the new project, 
+and delete the stuff automatically created from the new project. Run the project in iOS to get the file running. 
 
 What is our App?
 Our app is a mobile gym application that allows the user to keep track of your workouts and progress at the gym.
@@ -116,7 +119,7 @@ until the user does at least one exercise, this prevents blank workouts.
 		and the label that displays the time is changed. The label uses modulo, divison and flooring to convert from centiseconds to centiseconds, seconds and minutes.
 		if stop is clicked, then the interval is cleared, stopping the function from looping. The reset button  also clears the interval, but also resets
 		the time variable and the label. When stop is pressed the current value of time is also converted to seconds and automatically added to the time field.
-		Gym App** requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
+		G.Y.M requires the user to input values for all available fields, once all values are inputed Gym App** saves your data and redirects you back
 		to the Muscle Group Window where you can continue your workout.
 		
 		- Favorite Exercise: If the check box is checked, the column in the database for Favorite turns to One, and all the the exercises where favorite is equal
